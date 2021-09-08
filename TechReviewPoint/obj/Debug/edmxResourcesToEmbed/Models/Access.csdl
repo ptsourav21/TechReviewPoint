@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tech_review_pointModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AdminImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="QuestionID" Type="Int32" Nullable="false" />
+    <Property Name="Solve" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnswerDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Question" Relationship="Self.FK__Answers__Questio__48CFD27E" FromRole="Answers" ToRole="Questions" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Answers__UserID__47DBAE45" FromRole="Answers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__Catego__30F848ED" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ReviewID" Type="Int32" Nullable="false" />
+    <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CommentDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Review" Relationship="Self.FK__Comments__Review__398D8EEE" FromRole="Comments" ToRole="Reviews" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Comments__UserID__38996AB5" FromRole="Comments" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Follower">
+    <Key>
+      <PropertyRef Name="FollwerID" />
+    </Key>
+    <Property Name="FollwerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Followers__UserI__5070F446" FromRole="Followers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="IssueID" />
+    </Key>
+    <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="IssuePost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IssueDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Issues__ProductI__3D5E1FD2" FromRole="Issues" ToRole="Products" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Issues__UserID__3C69FB99" FromRole="Issues" ToRole="Users" />
+    <NavigationProperty Name="Replies" Relationship="Self.FK__Replies__IssueID__412EB0B6" FromRole="Issues" ToRole="Replies" />
+  </EntityType>
+  <EntityType Name="Pending">
+    <Key>
+      <PropertyRef Name="PendingID" />
+    </Key>
+    <Property Name="PendingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Pendings__UserID__2C3393D0" FromRole="Pendings" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Products__Catego__30F848ED" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Issues" Relationship="Self.FK__Issues__ProductI__3D5E1FD2" FromRole="Products" ToRole="Issues" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__Product__35BCFE0A" FromRole="Products" ToRole="Reviews" />
+    <NavigationProperty Name="WishLists" Relationship="Self.FK__WishLists__Produ__4D94879B" FromRole="Products" ToRole="WishLists" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Problem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="QuestionDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK__Answers__Questio__48CFD27E" FromRole="Questions" ToRole="Answers" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Questions__UserI__440B1D61" FromRole="Questions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Reply">
+    <Key>
+      <PropertyRef Name="ReplyID" />
+    </Key>
+    <Property Name="ReplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="IssueID" Type="Int32" Nullable="false" />
+    <Property Name="Reply1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReplyDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Issue" Relationship="Self.FK__Replies__IssueID__412EB0B6" FromRole="Replies" ToRole="Issues" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Replies__UserID__403A8C7D" FromRole="Replies" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewID" />
+    </Key>
+    <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="review_point" Type="Int32" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ReviewPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewDate" Type="DateTime" Precision="0" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__Review__398D8EEE" FromRole="Reviews" ToRole="Comments" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Reviews__Product__35BCFE0A" FromRole="Reviews" ToRole="Products" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Reviews__UserID__34C8D9D1" FromRole="Reviews" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPhone" Type="Int32" Nullable="false" />
+    <Property Name="UserAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailVerified" Type="Boolean" />
+    <Property Name="ActivationCode" Type="Guid" />
+    <Property Name="tp_point" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK__Answers__UserID__47DBAE45" FromRole="Users" ToRole="Answers" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK__Comments__UserID__38996AB5" FromRole="Users" ToRole="Comments" />
+    <NavigationProperty Name="Followers" Relationship="Self.FK__Followers__UserI__5070F446" FromRole="Users" ToRole="Followers" />
+    <NavigationProperty Name="Issues" Relationship="Self.FK__Issues__UserID__3C69FB99" FromRole="Users" ToRole="Issues" />
+    <NavigationProperty Name="Pendings" Relationship="Self.FK__Pendings__UserID__2C3393D0" FromRole="Users" ToRole="Pendings" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK__Questions__UserI__440B1D61" FromRole="Users" ToRole="Questions" />
+    <NavigationProperty Name="Replies" Relationship="Self.FK__Replies__UserID__403A8C7D" FromRole="Users" ToRole="Replies" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__UserID__34C8D9D1" FromRole="Users" ToRole="Reviews" />
+    <NavigationProperty Name="WishLists" Relationship="Self.FK__WishLists__UserI__4CA06362" FromRole="Users" ToRole="WishLists" />
+  </EntityType>
+  <EntityType Name="WishList">
+    <Key>
+      <PropertyRef Name="WishID" />
+    </Key>
+    <Property Name="WishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="WishDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__WishLists__Produ__4D94879B" FromRole="WishLists" ToRole="Products" />
+    <NavigationProperty Name="User" Relationship="Self.FK__WishLists__UserI__4CA06362" FromRole="WishLists" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__Answers__Questio__48CFD27E">
+    <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Answers__UserID__47DBAE45">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Catego__30F848ED">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Review__398D8EEE">
+    <End Role="Reviews" Type="Self.Review" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reviews">
+        <PropertyRef Name="ReviewID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ReviewID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__UserID__38996AB5">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Followers__UserI__5070F446">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Followers" Type="Self.Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Followers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Issues__ProductI__3D5E1FD2">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Issues">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Issues__UserID__3C69FB99">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Issues">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Replies__IssueID__412EB0B6">
+    <End Role="Issues" Type="Self.Issue" Multiplicity="1" />
+    <End Role="Replies" Type="Self.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issues">
+        <PropertyRef Name="IssueID" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="IssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pendings__UserID__2C3393D0">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Pendings" Type="Self.Pending" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Pendings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reviews__Product__35BCFE0A">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WishLists__Produ__4D94879B">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="WishLists" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="WishLists">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Questions__UserI__440B1D61">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Replies__UserID__403A8C7D">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Replies" Type="Self.Reply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Replies">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reviews__UserID__34C8D9D1">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WishLists__UserI__4CA06362">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="WishLists" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WishLists">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tech_review_pointEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Followers" EntityType="Self.Follower" />
+    <EntitySet Name="Issues" EntityType="Self.Issue" />
+    <EntitySet Name="Pendings" EntityType="Self.Pending" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Replies" EntityType="Self.Reply" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="WishLists" EntityType="Self.WishList" />
+    <AssociationSet Name="FK__Answers__Questio__48CFD27E" Association="Self.FK__Answers__Questio__48CFD27E">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Answers__UserID__47DBAE45" Association="Self.FK__Answers__UserID__47DBAE45">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Catego__30F848ED" Association="Self.FK__Products__Catego__30F848ED">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Review__398D8EEE" Association="Self.FK__Comments__Review__398D8EEE">
+      <End Role="Reviews" EntitySet="Reviews" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__UserID__38996AB5" Association="Self.FK__Comments__UserID__38996AB5">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Followers__UserI__5070F446" Association="Self.FK__Followers__UserI__5070F446">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Followers" EntitySet="Followers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Issues__ProductI__3D5E1FD2" Association="Self.FK__Issues__ProductI__3D5E1FD2">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Issues" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Issues__UserID__3C69FB99" Association="Self.FK__Issues__UserID__3C69FB99">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Issues" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Replies__IssueID__412EB0B6" Association="Self.FK__Replies__IssueID__412EB0B6">
+      <End Role="Issues" EntitySet="Issues" />
+      <End Role="Replies" EntitySet="Replies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pendings__UserID__2C3393D0" Association="Self.FK__Pendings__UserID__2C3393D0">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Pendings" EntitySet="Pendings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reviews__Product__35BCFE0A" Association="Self.FK__Reviews__Product__35BCFE0A">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WishLists__Produ__4D94879B" Association="Self.FK__WishLists__Produ__4D94879B">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="WishLists" EntitySet="WishLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Questions__UserI__440B1D61" Association="Self.FK__Questions__UserI__440B1D61">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Replies__UserID__403A8C7D" Association="Self.FK__Replies__UserID__403A8C7D">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Replies" EntitySet="Replies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reviews__UserID__34C8D9D1" Association="Self.FK__Reviews__UserID__34C8D9D1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WishLists__UserI__4CA06362" Association="Self.FK__WishLists__UserI__4CA06362">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="WishLists" EntitySet="WishLists" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
