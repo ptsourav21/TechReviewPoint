@@ -11,7 +11,8 @@ namespace TechReviewPoint.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,9 +30,33 @@ namespace TechReviewPoint.Models
         }
     
         public int UserID { get; set; }
+
+        [Required]
+        [Display(Name ="User Name")]
+        [DataType(DataType.Text)]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Email ID")]
+        [DataType(DataType.EmailAddress)]
         public string UserEmail { get; set; }
+
+        [Required]
+        [Display(Name =" Password")]
+        [DataType(DataType.Password)]
+        [MaxLength(12,ErrorMessage ="Maximum 12 Characters")]
+        [MinLength(5,ErrorMessage ="Minimum 5 length")]
+        
         public string UserPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("UserPassword",ErrorMessage ="Password Not Matched")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display]
         public int UserPhone { get; set; }
         public string UserAdress { get; set; }
         public string UserImg { get; set; }
