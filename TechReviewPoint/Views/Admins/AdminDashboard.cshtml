@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+    if (Session["AdminSessionEmail"] == null)
+    {
+        Response.Redirect("~/Admins/AdminLogin");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminDashboard</title>
+</head>
+<body>
+    <div> 
+        <h1>Admin Dashboard</h1>
+        <h1>User Email: @Session["AdminSessionEmail"]</h1>
+        <a href="@Url.Action("AdminLogOut","Admins")">Log Out</a>
+        
+    </div>
+</body>
+</html>

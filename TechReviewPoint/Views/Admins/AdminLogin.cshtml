@@ -1,0 +1,82 @@
+﻿@model TechReviewPoint.Models.Admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLogin</title>
+    <style>
+        #login_div{
+            position:absolute;
+            left:40%;
+            top:40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+        .field-validation-error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login_div">
+        @using (Html.BeginForm("Auth", "Admins", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td>Admin Login</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.AdminEmail)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.AdminEmail)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Html.ValidationMessageFor(model => model.AdminEmail)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.AdminPassword)</td>
+                    <td>
+                        @Html.EditorFor(model => model.AdminPassword)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Html.ValidationMessageFor(model => model.AdminPassword)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="name" value="Login" />
+                        <input type="reset" name="name" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+
+        }
+
+
+    </div>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
