@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Login";
+    var msg = ViewBag.LoginFailed;
 }
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,7 @@
                         <span></span>
                     </div>
 
+
                     <div class="agileits-bottom">
                         <input type="submit" value="Login">
                     </div>
@@ -48,6 +50,16 @@
             </div>
         </div>
     </div>
+
+
+    @if (msg != null)
+    {
+
+        <p class="text-danger">@msg</p>
+        <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    }
+
+
 </body>
 </html>
 

@@ -1,0 +1,98 @@
+﻿@model TechReviewPoint.Models.User
+
+@{
+    Layout = null;
+    if (Session["UserSessionEmail"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
+}
+
+<h2>UserDashboard</h2>
+
+<div>
+   
+    <h1>User Email: @Session["UserSessionEmail"]</h1>
+    <a href="@Url.Action("UserLogout","Users")">Log Out</a>
+
+</div>
+
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEmailVerified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEmailVerified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivationCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivationCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tp_point)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tp_point)
+        </dd>
+
+    </dl>
+</div>
