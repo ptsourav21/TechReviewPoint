@@ -46,19 +46,21 @@
                         <input type="submit" value="Login">
                     </div>
 
+
                 </form>
             </div>
         </div>
     </div>
 
-
     @if (msg != null)
     {
 
         <p class="text-danger">@msg</p>
-        <p>@Html.ActionLink("Home", "Index", "Home")</p>
     }
 
+    <div>
+        <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    </div>
 
 </body>
 </html>

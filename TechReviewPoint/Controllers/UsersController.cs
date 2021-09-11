@@ -39,10 +39,8 @@ namespace TechReviewPoint.Controllers
         {
             return View();
         }
-        public ActionResult UserDashboard()
-        {
-            return View();
-        }
+        
+       
 
         [HttpPost]
         public ActionResult Login(loginUser login)
@@ -56,7 +54,7 @@ namespace TechReviewPoint.Controllers
                     if (user != null)
                     {
                     Session["UserSessionEmail"] = user.UserEmail;
-                    // return RedirectToAction("UserDashboard", new { email = user.UserEmail });
+                     //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
                     return RedirectToAction("UserDashboard");
 
                     }
@@ -77,13 +75,15 @@ namespace TechReviewPoint.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
+      
+        public ActionResult UserDashboard()
+        {
+            string email = Convert.ToString(Session["UserSessionEmail"]);
+            var info = db.Users.Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
+            return View(info);
+        }
 
-
-
-
-
-
-        // GET: Users/Details/5
+        
 
 
 
