@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Picture)
+            <img src="@Url.Content(Model.Picture)" width="250" height="250" />
         </dd>
 
         <dt>
@@ -64,3 +64,8 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<p>
+    <a href="@Url.Action("Index","Comments")">Add a comment</a>
+</p>
+
