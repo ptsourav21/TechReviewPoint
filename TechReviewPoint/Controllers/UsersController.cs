@@ -173,7 +173,9 @@ namespace TechReviewPoint.Controllers
                     if (user != null)
                     {
                     Session["UserSessionEmail"] = user.UserEmail;
-                     //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
+                    Session["UserSessionID"] = user.UserID;
+
+                    //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
                     return RedirectToAction("UserDashboard");
 
                     }
@@ -199,8 +201,7 @@ namespace TechReviewPoint.Controllers
         [HttpGet]
         public ActionResult UpdateProfile(int? id)
         {
-            
-                if (id == null)
+            /*                if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
@@ -208,8 +209,9 @@ namespace TechReviewPoint.Controllers
                 if (category == null)
                 {
                     return HttpNotFound();
-                }
-                return View(category);
+                } 
+                */
+                return View();
             }
 
 
@@ -230,7 +232,7 @@ namespace TechReviewPoint.Controllers
 
 
         [HttpPost]
-        public ActionResult UpdateProfile(User user)
+        public ActionResult UpdateProfile(Update_profile user)
         {
 
                 string email = Convert.ToString(Session["UserSessionEmail"]);

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TechReviewPoint.Models;
+using System.IO;
+
 
 namespace TechReviewPoint.Controllers
 {
@@ -49,10 +51,26 @@ namespace TechReviewPoint.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewID,review_point,UserID,ProductID,ReviewPost,ReviewDate,Picture")] Review review)
+        public ActionResult Create([Bind(Include = "ReviewID,review_point,UserID,ProductID,ReviewPost,ReviewDate,Picture,review_img_file")] Review review)
         {
-            if (ModelState.IsValid)
+          //  Session["UserSessionID"] = user.UserID;
+           // if (Session["UserSessionID"] != null) { }
+
+            string fileName = Path.GetFileNameWithoutExtension(review.review_img_file.FileName);
+            string extention = Path.GetExtension(review.review_img_file.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff")+ extention;
+
+            review.Picture = "~/Review_Image/" + fileName;
+
+            fileName = Path.Combine(Server.MapPath("~/Review_Image/"), fileName);
+
+            review.review_img_file.SaveAs(fileName);
+
+
+
+           if (ModelState.IsValid)
             {
+                
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +78,7 @@ namespace TechReviewPoint.Controllers
 
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", review.ProductID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", review.UserID);
+           // ModelState.Clear();
             return View(review);
         }
 

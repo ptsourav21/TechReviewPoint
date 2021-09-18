@@ -11,6 +11,7 @@ namespace TechReviewPoint.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Web;
     
     public partial class Review
     {
@@ -27,6 +28,8 @@ namespace TechReviewPoint.Models
         public string ReviewPost { get; set; }
         public Nullable<System.DateTime> ReviewDate { get; set; }
         public string Picture { get; set; }
+
+        public HttpPostedFileBase review_img_file { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
