@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TechReviewPoint.Models;
+using System.IO;
 
 namespace TechReviewPoint.Controllers
 {
@@ -48,8 +49,20 @@ namespace TechReviewPoint.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductDetails,ProductImg")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,CategoryID,ProductName,ProductPrice,ProductDetails,ProductImg,product_img_file")] Product product)
         {
+
+            string fileName = Path.GetFileNameWithoutExtension(product.product_img_file.FileName);
+            string extention = Path.GetExtension(product.product_img_file.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+
+            product.ProductImg = "~/Product_Image/" + fileName;
+
+            fileName = Path.Combine(Server.MapPath("~/Product_Image/"), fileName);
+
+            product.product_img_file.SaveAs(fileName);
+
+
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);

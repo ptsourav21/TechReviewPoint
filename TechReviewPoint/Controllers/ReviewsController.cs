@@ -151,5 +151,15 @@ namespace TechReviewPoint.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public ActionResult review_Post_details(int id)
+        {
+            Review re = new Review();
+
+            re = db.Reviews.Where(x => x.ReviewID == id).FirstOrDefault();
+            return View(re);
+
+        }
     }
 }

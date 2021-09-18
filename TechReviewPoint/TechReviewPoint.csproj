@@ -278,9 +278,11 @@
     <Content Include="Views\Reviews\Details.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Reviews\review_Post_details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Product_Image\" />
     <Folder Include="Review_Image\" />
   </ItemGroup>
   <ItemGroup>
