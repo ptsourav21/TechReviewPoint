@@ -72,7 +72,6 @@ E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoin
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\bin\Newtonsoft.Json.xml
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\bin\Antlr3.Runtime.pdb
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CoreCompileInputs.cache
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CopyComplete
 E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.dll
@@ -329,3 +328,4 @@ E:\3.2 AUST\SD Lab\Final\TechReviewPoint\TechReviewPoint\bin\Newtonsoft.Json.xml
 E:\3.2 AUST\SD Lab\Final\TechReviewPoint\TechReviewPoint\bin\Antlr3.Runtime.pdb
 E:\3.2 AUST\SD Lab\Final\TechReviewPoint\TechReviewPoint\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\3.2 AUST\SD Lab\Final\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CopyComplete
+E:\Project\All my vs works\Final_TechReview_Point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache

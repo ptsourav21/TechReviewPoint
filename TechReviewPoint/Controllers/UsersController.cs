@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,6 +14,124 @@ namespace TechReviewPoint.Controllers
     public class UsersController : Controller
     {
         private tech_review_pointEntities db = new tech_review_pointEntities();
+
+
+
+
+
+        // GET: Users
+        public ActionResult Index()
+        {
+            return View(db.Users.ToList());
+        }
+
+        // GET: Users/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // GET: Users/Create
+        public ActionResult Create()
+        {
+            return View("test");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "UserID,UserName,UserEmail,UserPassword,UserPhone,UserAdress,tp_point")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View("test", user);
+        }
+
+        // GET: Users/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "UserID,UserName,UserEmail,UserPassword,UserPhone,UserAdress,tp_point")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        // GET: Users/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Users/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
+
+
+
+
+
+
+
 
         // GET: Users
         [HttpGet]
@@ -39,7 +158,7 @@ namespace TechReviewPoint.Controllers
         {
             return View();
         }
-        
+
        
 
         [HttpPost]
@@ -75,19 +194,67 @@ namespace TechReviewPoint.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
-      
+
+
+        [HttpGet]
+        public ActionResult UpdateProfile(int? id)
+        {
+            
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Category category = db.Categories.Find(id);
+                if (category == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(category);
+            }
+
+
+       /* public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Category category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
+        }
+       */
+
+
+        [HttpPost]
+        public ActionResult UpdateProfile(User user)
+        {
+
+                string email = Convert.ToString(Session["UserSessionEmail"]);
+
+                var info = db.Users.Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
+
+            
+
+            return View(info);
+        }
+
+
+
+
         public ActionResult UserDashboard()
         {
             string email = Convert.ToString(Session["UserSessionEmail"]);
             var info = db.Users.Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
             return View(info);
+
+
         }
 
-        
-
-
-
-
+       
 
     }
 }
