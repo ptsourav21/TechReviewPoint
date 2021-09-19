@@ -5,6 +5,11 @@
     if (Session["AdminSessionEmail"] == null)
     {
         Response.Redirect("~/Admins/AdminLogin");
+
+        var msg1 = ViewBag.TotalUsers;
+      //  ViewBag.TotalPassengers = TotalPassengersQuery;
+      //  ViewBag.TotalNextPassenger = TotalNextPassengersQuery1;
+
     }
 }
 <!DOCTYPE html>
@@ -50,18 +55,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li>
+                                    <a href="#">Log Out</a>
+
+                                    <i class="fa fa-sign-out"></i> Logout</a>
+                                </li>
                             </ul>
                         </li>
 
                     </ul>
                 </li>
 
-                <li class="second logo"><h2><a href="main-page.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i>@Session["AdminSessionEmail"] </a></h2></li>
+                <li class="second logo"><h2><a href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i>@Session["AdminSessionEmail"] </a></h2></li>
 
                 <li class="second full-screen">
                     <section class="full-top">
-                        <button id="toggle"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
+                        <button id="toggle">
+
+
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <a href="@Url.Action("AdminLogOut","Admins")"> </a>
+                        </button>
                     </section>
                 </li>
 
@@ -73,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- //w3_agileits_top_nav-->
         <!-- /inner_content-->
         <div class="inner_content">
-            
+
             <!-- /inner_content_w3_agile_info-->
             <div class="inner_content_w3_agile_info">
                 <!-- /agile_top_w3_grids-->
@@ -83,7 +97,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="@Url.Action("Index","Users")">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <div class="ca-content">
-                                    <h4 class="ca-main">16,808</h4>
+                                    <h4 class="ca-main">
+                                      4566</h4>
                                     <h3 class="ca-sub">USers</h3>
                                 </div>
                             </a>
@@ -98,7 +113,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="@Url.Action("Index","Products")">
+
                                 <i class="fa fa-gamepad" aria-hidden="true"></i>
                                 <div class="ca-content">
                                     <h4 class="ca-main two">29,008</h4>
@@ -107,7 +123,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="@Url.Action("Index","Reviews")">
+
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
                                 <div class="ca-content">
                                     <h4 class="ca-main three">49,436</h4>
@@ -116,7 +133,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="@Url.Action("Index","Issues")">
+
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <div class="ca-content">
                                     <h4 class="ca-main four">30,808</h4>
@@ -257,6 +275,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="js/scripts.js"></script>
 
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+
+
 
 
 </body>

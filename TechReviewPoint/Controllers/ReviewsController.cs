@@ -20,6 +20,20 @@ namespace TechReviewPoint.Controllers
         public ActionResult Index()
         {
             var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User);
+            /*
+            var id = Session["UserSessionID"];
+
+            var innerJoin = Review.Join(// outer sequence 
+                      User,  // inner sequence 
+                      r => r.ReviewId,    // outerKeySelector
+                      standard => standard.StandardID,  // innerKeySelector
+                      (student, standard) => new  // result selector
+                      {
+                          StudentName = student.StudentName,
+                          StandardName = sta
+
+                          */
+
             return View(reviews.ToList());
         }
 
