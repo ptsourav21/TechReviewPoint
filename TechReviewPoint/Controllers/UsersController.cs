@@ -195,7 +195,7 @@ namespace TechReviewPoint.Controllers
         public ActionResult UserLogout()
         {
             Session.Abandon();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index","Home");
         }
 
 
