@@ -174,6 +174,7 @@ namespace TechReviewPoint.Controllers
                     {
                     Session["UserSessionEmail"] = user.UserEmail;
                     Session["UserSessionID"] = user.UserID;
+                    Session["UserSessionName"] = user.UserName;
 
                     //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
                     return RedirectToAction("UserDashboard");
