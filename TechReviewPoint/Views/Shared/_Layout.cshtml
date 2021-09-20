@@ -1,122 +1,106 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>TechReviewPoint</title>
+
 </head>
 <body>
+    <!-- Navbar Starts Here-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">@Html.ActionLink("TechReivePoint", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   
+                    @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </li>*@
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("TechReivePoint", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
 
-                <!--
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Sign in / Sign Up <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("AdminLogin","Admins")" style="font-weight:bold;">Admin</a></li>
-                                <li><a href="@Url.Action("Login","Users")" style="font-weight:bold;">User</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                    -->
-
-            <ul class="nav navbar-nav navbar-right">
-
-                @if (Session["UserSessionEmail"] != null || Session["AdminSessionEmail"] != null)
-                {
-                    if (Session["UserSessionEmail"] != null)
+                    @if (Session["UserSessionEmail"] != null || Session["AdminSessionEmail"] != null)
                     {
-                        <li>@Html.ActionLink("Post a Review", "Index", "Reviews")</li>
+                        if (Session["UserSessionEmail"] != null)
+                        {
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                            <li class="nav-item"><a class="nav-link" href="~/Reviews/Index">Post a Review</a></li>
+                            <li class="nav-item"><a class="nav-link" href="">@Session["UserSessionEmail"]</a></li>
+                            <li class="nav-item"><a class="nav-link" href="~/Users/UserLogout">Log Out</a></li>
 
-                        <li><p style="color:#fff; margin-top:15px">@Session["UserSessionEmail"]</p></li>
-                        <li>@Html.ActionLink("Log Out", "UserLogout", "Users")</li>
+                        }
+                        else
+                        {
+                            <li><p style="color:#fff; margin-top:15px">@Session["AdminSessionEmail"]</p></li>
+                            <li class="nav-item"><a class="nav-link" href="~/Admins/AdminSignout">Log Out</a></li>
+                        }
                     }
                     else
                     {
-
-                        <li><p style="color:#fff; margin-top:15px">@Session["AdminSessionEmail"]</p></li>
-                        <li>@Html.ActionLink("Sign out", "AdminSignout", "Admins")</li>
+                        <li class="nav-item">
+                            <a class="nav-link active px-3" aria-current="page" href="~/Home/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" aria-current="page" href="#">Q&A</a>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" aria-current="page" href="~/Home/About">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" aria-current="page" href="#">Contact Us</a>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Join
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Login", "Users")">Login</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Registration","Users")">Register</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="@Url.Action("AdminLogin", "Admins")">Admin</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
                     }
-                }
-
-                else
-                {
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Sign in / Sign Up <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("AdminLogin", "Admins")" style="font-weight:bold;">Admin</a></li>
-                            <li><a href="@Url.Action("Login", "Users")" style="font-weight:bold;">Customer</a></li>
-                        </ul>
-                    </li>
-
-                }
-            </ul>
-
-
-
-            </div>
-
-
-
-
-        </div>
-    </div>
-    <!--
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Registration", "Registration", "Users")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Users")</li>
                 </ul>
+
             </div>
         </div>
-    </div>
-    -->
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-           
-        </footer>
-    </div>
+    </nav>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- Navbar Ends Here-->
+
+    <!-- Body Rendering Starts Here-->
+    @RenderBody();
+    <!-- Body Rendering Ends Here-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
