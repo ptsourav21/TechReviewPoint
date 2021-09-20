@@ -25,6 +25,11 @@ namespace TechReviewPoint.Controllers
             return View(db.Users.ToList());
         }
 
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
