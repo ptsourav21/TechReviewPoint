@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetails";
+}
+<div class="container body-content">
+    <img src="https://source.unsplash.com/1400x600/?gadget,review" class="img-fluid" alt="..." width="1400" height="500">
+    <h2 class="my-4">Product Name</h2>
+
+    <!--Tabs starts here-->
+    <ul class="nav nav-tabs my-4" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Specification</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Issues</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+
+        <!--Specification Code Starts Here-->
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h2>This Div will contain specs</h2>
+        </div>
+        <!--Specification Code Ends Here-->
+
+        <!--Review Code Starts Here-->
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <h2>This Div will Contain Reviews</h2>
+            <!--Post a Review Form Starts Here-->
+            <form class="row g-3">
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Review</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Write a review">
+                </div>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Upload Pictures</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-info">Post</button>
+                </div>
+            </form>
+            
+            <!--Post a Review Ends Starts Here-->
+            <!--Review Cards Starts Here-->
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">User's Name</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Review</h5>
+                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <a href="#" class="btn btn-info">View Details</a>
+                </div>
+            </div>
+            <!--Review Cards Ends Here-->
+
+        </div>
+
+        <!--Issues Code Starts Here-->
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <h2>This Div will contain Issues about the product</h2>
+
+            <!--Post a Issues Cards Starts Here-->
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Write an Issue" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Post</button>
+            </div>
+            <!--Post a Issues Ends Starts Here-->
+            <!--Issues cards start here-->
+            <div class="card my-4">
+                <div class="card-header">
+                    User Name
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Issue Details</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-header">
+                    User Name
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Issue Details</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-header">
+                    User Name
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Issue Details</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-header">
+                    User Name
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Issue Details</p>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-header">
+                    User Name
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Issue Details</p>
+                    </blockquote>
+                </div>
+            </div>
+            <!--Issues cards Ends here-->
+
+        </div>
+    </div>
+    <!--Tabs Ends Here-->
+</div>
