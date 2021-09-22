@@ -6,11 +6,16 @@
     {
         Response.Redirect("~/Admins/AdminLogin");
 
-        var msg1 = ViewBag.TotalUsers;
-      //  ViewBag.TotalPassengers = TotalPassengersQuery;
-      //  ViewBag.TotalNextPassenger = TotalNextPassengersQuery1;
 
     }
+
+
+    var review = ViewBag.review;
+    var user = ViewBag.user;
+    var product = ViewBag.product;
+    var issue = ViewBag.issue;
+    var category = ViewBag.category;
+
 }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -98,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <div class="ca-content">
                                     <h4 class="ca-main">
-                                      4566</h4>
+                                      @user</h4>
                                     <h3 class="ca-sub">USers</h3>
                                 </div>
                             </a>
@@ -107,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="@Url.Action("Index","Categories")">
                                 <i class="fa fa-sitemap" aria-hidden="true"></i>
                                 <div class="ca-content">
-                                    <h4 class="ca-main one">26,808</h4>
+                                    <h4 class="ca-main one">@category</h4>
                                     <h3 class="ca-sub one">Categories</h3>
                                 </div>
                             </a>
@@ -117,7 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <i class="fa fa-gamepad" aria-hidden="true"></i>
                                 <div class="ca-content">
-                                    <h4 class="ca-main two">29,008</h4>
+                                    <h4 class="ca-main two">@product</h4>
                                     <h3 class="ca-sub two">Products</h3>
                                 </div>
                             </a>
@@ -127,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <i class="fa fa-tasks" aria-hidden="true"></i>
                                 <div class="ca-content">
-                                    <h4 class="ca-main three">49,436</h4>
+                                    <h4 class="ca-main three">@review</h4>
                                     <h3 class="ca-sub three">Reviews</h3>
                                 </div>
                             </a>
@@ -137,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <div class="ca-content">
-                                    <h4 class="ca-main four">30,808</h4>
+                                    <h4 class="ca-main four">@issue</h4>
                                     <h3 class="ca-sub four">Issues</h3>
                                 </div>
                             </a>

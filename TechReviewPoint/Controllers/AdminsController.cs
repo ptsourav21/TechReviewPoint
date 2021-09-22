@@ -13,6 +13,7 @@ namespace TechReviewPoint.Controllers
 {
     public class AdminsController : Controller
     {
+        loginUser abc = new loginUser();
 
 
 
@@ -30,6 +31,101 @@ namespace TechReviewPoint.Controllers
         }
         public ActionResult AdminDashboard()
         {
+            var total_review = ("SELECT COUNT(*) FROM Reviews");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_review, connection);
+                    connection.Open();
+                    total_review = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_review = e.ToString();
+            }
+
+            ViewBag.review = total_review;
+
+            var total_user = ("SELECT COUNT(*) FROM Users");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_user, connection);
+                    connection.Open();
+                    total_user = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_user = e.ToString();
+            }
+            ViewBag.user = total_user;
+
+            var total_Product = ("SELECT COUNT(*) FROM Products");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_Product, connection);
+                    connection.Open();
+                    total_Product = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_Product = e.ToString();
+            }
+
+            ViewBag.product = total_Product;
+
+            var total_category = ("SELECT COUNT(*) FROM Categories");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_category, connection);
+                    connection.Open();
+                    total_category = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_category = e.ToString();
+            }
+            ViewBag.category = total_category;
+
+
+
+
+            var total_issue = ("SELECT COUNT(*) FROM Issues");
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_issue, connection);
+                    connection.Open();
+                    total_issue = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_issue = e.ToString();
+            }
+            ViewBag.issue = total_issue;
+
+
             return View();
         }
         [HttpPost]

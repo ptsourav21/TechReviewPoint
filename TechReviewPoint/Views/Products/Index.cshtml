@@ -9,49 +9,45 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductImg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductImg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
+
+@foreach (var item in Model)
+{
+    <div class="container body-content">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@Html.DisplayFor(modelItem => item.ProductImg)" width="250" height="250" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                        <p class="card-text"> @Html.DisplayFor(modelItem => item.ProductDetails)</p>
+                        <a href="~/ProductDetails/ProductDetails" class="btn btn-info">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://s...content-available-to-author-only...h.com/1400x600/?laptop" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a short card.</p>
+                        <a href="#" class="btn btn-info">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://s...content-available-to-author-only...h.com/1400x600/?fridge" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-info">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 }
 
-</table>
+
