@@ -132,10 +132,12 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ReviewDetailsController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -368,6 +370,9 @@
     <Content Include="Views\Users\Profile.cshtml" />
     <Content Include="Views\ProductDetails\ProductDetails.cshtml" />
     <Content Include="Views\ReviewDetails\ReviewDetails.cshtml" />
+    <Content Include="Views\Shared\ProductDetailsLayout.cshtml" />
+    <Content Include="Views\Review\ReviewsInProductDetails.cshtml" />
+    <Content Include="Views\Issue\IssuesInProductDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

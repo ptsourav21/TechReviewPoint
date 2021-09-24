@@ -241,7 +241,6 @@ I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\bin\System.Web.WebPag
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\bin\Newtonsoft.Json.xml
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\bin\Antlr3.Runtime.pdb
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CoreCompileInputs.cache
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CopyComplete
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.dll
@@ -661,3 +660,4 @@ E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj
 E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CopyComplete
 E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.dll
 E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.pdb
+I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
