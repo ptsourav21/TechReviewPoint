@@ -44,7 +44,11 @@
             @Html.DisplayFor(modelItem => item.ReviewDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Picture)
+        
+
+                <img src="@Url.Content(item.Picture)" width="20" height="50" class="card-img-top" alt="...">
+
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Product.ProductName)
