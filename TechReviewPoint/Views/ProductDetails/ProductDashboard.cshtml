@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TechReviewPoint.Models.Product>
+
+@{
+    ViewBag.Title = "ProductDashboard";
+   // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+
+}
+
+<h2>ProductDashboard</h2>
+
+<div class="container body-content">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="@Url.Content(item.ProductImg)" width="250" height="250" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                        <p class="card-text"> @Html.DisplayFor(modelItem => item.ProductDetails)</p>
+                     
+                        <p class="btn btn-info">@Html.ActionLink("Details", "ProductDetails", new { id = item.ProductID })</p>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+

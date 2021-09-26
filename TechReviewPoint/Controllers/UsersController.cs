@@ -27,6 +27,7 @@ namespace TechReviewPoint.Controllers
 
         public ActionResult Profile()
         {
+            int id = Convert.ToInt32(Session["UserSessionID"]);
             return View();
         }
 
@@ -153,7 +154,7 @@ namespace TechReviewPoint.Controllers
                 db.Users.Add(u);
                 db.SaveChanges();
                 //Next page
-                return Content("Registration Complete");
+                return RedirectToAction("Login");
             }
             return View();
         }
@@ -182,10 +183,12 @@ namespace TechReviewPoint.Controllers
                     Session["UserSessionName"] = user.UserName;
 
                     //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
-                    return RedirectToAction("UserDashboard");
+                  //  return RedirectToAction("UserDashboard");
+                    return RedirectToAction("ProductDashboard", "ProductDetails", new { area = "" });
 
-                    }
-                    else
+
+                }
+                else
                     {
                        
                         ViewBag.Loginfailed = "User not found or Password mismatch";

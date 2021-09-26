@@ -373,6 +373,7 @@
     <Content Include="Views\Shared\ProductDetailsLayout.cshtml" />
     <Content Include="Views\Review\ReviewsInProductDetails.cshtml" />
     <Content Include="Views\Issue\IssuesInProductDetails.cshtml" />
+    <Content Include="Views\ProductDetails\ProductDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

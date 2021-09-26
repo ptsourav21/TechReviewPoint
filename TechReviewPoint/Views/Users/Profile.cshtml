@@ -1,13 +1,19 @@
-﻿
+﻿@model TechReviewPoint.Models.User
 @{
     ViewBag.Title = "Profile";
+    if (Session["UserSessionEmail"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+
+
+    }
 }
 <div class="container body-content my-4">
     <!--Profile Picture-->
     <img src="https://source.unsplash.com/1400x600/?portrait" class="bd-placeholder-img rounded-circle" width="200" height="200">
 
     <div class="mx-4 my-4">
-        <h1>Profile Name</h1>
+        <h1>@Session["UserSessionName"]</h1>
         <h6>Tech Points <span class="badge bg-secondary"> 8.5/10</span></h6>
         <p>Upatyaka 13/1, Hasan Nagar Sunamganj</p>
 

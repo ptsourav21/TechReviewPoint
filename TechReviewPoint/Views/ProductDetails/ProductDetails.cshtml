@@ -1,10 +1,27 @@
-﻿
+﻿@model TechReviewPoint.Models.Product
+
 @{
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 }
 
 
-    <h2>This Div will contain specs</h2>
+<h2>This Div will contain specs</h2>
 
-    
+<div class="col-md-4">
+    <div class="card h-100">
+
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => Model.ProductName)</h5>
+            <p class="card-text"> @Html.DisplayFor(modelItem => Model.ProductDetails)</p>
+
+
+            <p class="card-text"> @Html.DisplayFor(modelItem => Model.ProductPrice)</p>
+            <p class="card-text"> @Html.DisplayFor(modelItem => Model.Category)</p>
+
+
+
+        </div>
+    </div>
+</div>
+

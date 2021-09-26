@@ -1,4 +1,7 @@
-﻿@{
+﻿@model TechReviewPoint.Models.Product
+
+
+@{
     Layout = "_Layout.cshtml";
 }
 
@@ -7,7 +10,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://source.unsplash.com/1400x600/?gadget,review" class="d-block w-100" alt="...">
+                <img src="@Url.Content(Model.ProductImg)" width="550" height="550" />
             </div>
             <div class="carousel-item">
                 <img src="https://source.unsplash.com/1400x600/?gadget,review" class="d-block w-100" alt="...">
@@ -26,11 +29,23 @@
         </button>
     </div>
 
-    <h2 class="my-4">Product Name</h2>
+
+    <dd>
+        <h2>
+            @Html.DisplayFor(model => model.ProductName)
+        </h2>
+    </dd>
 
     <nav class="nav">
-        <a class="nav-link active" aria-current="page" href="~/ProductDetails/ProductDetails">Specification</a>
-        <a class="nav-link" href="~/Review/ReviewsInProductDetails">Reviews</a>
+        <a class="nav-link active" aria-current="page">
+           
+                @Html.ActionLink("Specification", "ProductDetails", "ProductDetails")
+
+        </a>
+        <a class="nav-link">
+         @Html.ActionLink("Review", "ReviewDetails", "ReviewDetails")
+
+        </a>
         <a class="nav-link" href="~/Issue/IssuesInProductDetails">Issues</a>
     </nav>
     <div class"my-4"></div>
