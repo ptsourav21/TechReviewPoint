@@ -35,16 +35,20 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ProductID, "ProductID", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+
             @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+      
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.ReviewPost, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+
             @Html.EditorFor(model => model.ReviewPost, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ReviewPost, "", new { @class = "text-danger" })
+        
         </div>
     </div>
 

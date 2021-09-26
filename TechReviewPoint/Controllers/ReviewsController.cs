@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using TechReviewPoint.Models;
 using System.IO;
 
-
 namespace TechReviewPoint.Controllers
 {
     public class ReviewsController : Controller
@@ -19,20 +18,16 @@ namespace TechReviewPoint.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
+
+            int id = Convert.ToInt32(Session["UserSessionID"]);
+            //Review re = db.Reviews.Find(id);
             var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User);
-            /*
-            var id = Session["UserSessionID"];
+            //.Where(m => m.UserID.Equals(id));
 
-            var innerJoin = Review.Join(// outer sequence 
-                      User,  // inner sequence 
-                      r => r.ReviewId,    // outerKeySelector
-                      standard => standard.StandardID,  // innerKeySelector
-                      (student, standard) => new  // result selector
-                      {
-                          StudentName = student.StudentName,
-                          StandardName = sta
 
-                          */
+            //  var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(5));
+
+
 
             return View(reviews.ToList());
         }
@@ -40,6 +35,8 @@ namespace TechReviewPoint.Controllers
         // GET: Reviews/Details/5
         public ActionResult Details(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,6 +47,8 @@ namespace TechReviewPoint.Controllers
                 return HttpNotFound();
             }
             return View(review);
+
+
         }
 
         // GET: Reviews/Create
@@ -67,12 +66,12 @@ namespace TechReviewPoint.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReviewID,review_point,UserID,ProductID,ReviewPost,ReviewDate,Picture,review_img_file")] Review review)
         {
-          //  Session["UserSessionID"] = user.UserID;
-           // if (Session["UserSessionID"] != null) { }
+            //  Session["UserSessionID"] = user.UserID;
+            // if (Session["UserSessionID"] != null) { }
 
             string fileName = Path.GetFileNameWithoutExtension(review.review_img_file.FileName);
             string extention = Path.GetExtension(review.review_img_file.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff")+ extention;
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
 
             review.Picture = "~/Review_Image/" + fileName;
 
@@ -82,9 +81,9 @@ namespace TechReviewPoint.Controllers
 
 
 
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                
+
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -92,7 +91,7 @@ namespace TechReviewPoint.Controllers
 
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", review.ProductID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", review.UserID);
-           // ModelState.Clear();
+            // ModelState.Clear();
             return View(review);
         }
 

@@ -34,10 +34,12 @@ namespace TechReviewPoint.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
+            Session["product_ID"] = id;
+
 
             Product pro = db.Products.Find(id);
-            Session["product_ID"] = pro.ProductID;
+           // Session["product_ID"] = pro.ProductID;
 
             if (pro == null)
             {

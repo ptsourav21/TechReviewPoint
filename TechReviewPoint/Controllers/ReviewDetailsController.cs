@@ -13,9 +13,9 @@ namespace TechReviewPoint.Controllers
         private tech_review_pointEntities db = new tech_review_pointEntities();
 
         // GET: ReviewDetails
-        public ActionResult ReviewDetails()
+        public ActionResult ReviewDetails(int? id)
         {
-            /*
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -26,8 +26,8 @@ namespace TechReviewPoint.Controllers
                 return HttpNotFound();
             }
             return View(review);
-            */
-            return View();
+            
+            //return View();
         }
     }
 }

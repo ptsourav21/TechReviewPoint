@@ -24,11 +24,14 @@ namespace TechReviewPoint.Controllers
         {
             return View(db.Users.ToList());
         }
-
+       
         public ActionResult Profile()
         {
             int id = Convert.ToInt32(Session["UserSessionID"]);
-            return View();
+            var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id));
+
+  
+            return View(reviews.ToList());
         }
 
         // GET: Users/Details/5
