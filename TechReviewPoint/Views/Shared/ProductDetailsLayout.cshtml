@@ -29,30 +29,24 @@
         </button>
     </div>
 
-    
+
     <dd>
-        <h2>
+        <h1 style="text-align:center">
             @Html.DisplayFor(model => model.ProductName)
-        </h2>
+        </h1>
     </dd>
-       
+
     <nav class="nav">
         <a class="nav-link active" aria-current="page">
-
-
             @Html.ActionLink("Specification", "ProductDetails", "ProductDetails", null,
             new { @class = "btn btn-outline-dark" })
-
-
         </a>
         <a class="nav-link">
-
             @Html.ActionLink("Review", "ReviewsInProductDetails", "Review", null,
             new { @class = "btn btn-outline-dark" })
-
-
         </a>
         <a class="nav-link" href="~/Issue/IssuesInProductDetails">Issues</a>
     </nav>
     <div class"my-4"></div>
     @RenderBody()
+</div>
