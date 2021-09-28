@@ -39,16 +39,16 @@
     <nav class="nav">
         <a class="nav-link active" aria-current="page">
 
-            @Html.ActionLink("Specification", "ProductDetails", "ProductDetails")
+
+            @Html.ActionLink("Specification", "ProductDetails", "ProductDetails", null,
+            new { @class = "btn btn-outline-dark" })
+
 
         </a>
         <a class="nav-link">
 
-
-            @Html.ActionLink("Review", "ReviewsInProductDetails", "Review")
-          
-
-
+            @Html.ActionLink("Review", "ReviewsInProductDetails", "Review", null,
+            new { @class = "btn btn-outline-dark" })
 
 
         </a>

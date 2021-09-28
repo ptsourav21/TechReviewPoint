@@ -48,7 +48,8 @@
                     @Html.DisplayFor(modelItem => item.ProductDetails)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProductImg)
+                    <img src="@Url.Content(item.ProductImg)" width="20" height="50" class="card-img-top" alt="...">
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.CategoryName)
