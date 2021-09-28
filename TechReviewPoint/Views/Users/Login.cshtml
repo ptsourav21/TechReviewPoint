@@ -44,6 +44,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <input type="email" name="UserEmail" placeholder="E-mail" />
 
                             <input type="password" name="UserPassword" placeholder="Password" />
+                            @if (msg != null)
+                            {
+
+                                <p class="text-danger">@msg</p>
+                            }
                             <div class="tp">
                                 <input type="submit" value="SIGN IN">
                             </div>
@@ -56,14 +61,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li><a href="#"><i class="fa fa-rss"></i></a></li>
                         </ul>
                     </div>
-                    <p><a href="signup.html"> Don't have an account?</a></p>
+                    <p><a href="@Url.Action("Registration","Users")"> Don't have an account?</a></p>
 
-                    <h6><a href="main-page.html">Back To Home</a><h6>
+                    <h6><a href="_Layout.cshtml">Back To Home</a><h6>
                 </div>
             </div>
             <!--copy rights start here-->
             <div class="copyrights_agile">
-                <p>© 2017 Esteem. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                <p>© All Rights Reserved by Tech Review Point </p>
             </div>
             <!--copy rights end here-->
         </div>
@@ -117,11 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     </script>
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-    @if (msg != null)
-    {
 
-        <p class="text-danger">@msg</p>
-    }
 
 </body>
 </html>

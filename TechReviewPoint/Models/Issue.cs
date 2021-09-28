@@ -11,7 +11,8 @@ namespace TechReviewPoint.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Issue
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,19 @@ namespace TechReviewPoint.Models
         {
             this.Replies = new HashSet<Reply>();
         }
-    
+        [Display(Name = "Issue ID")]
         public int IssueID { get; set; }
+        
+        [Display(Name = "User ID")]
         public int UserID { get; set; }
+
+        [Display(Name = "Product ID")]
         public int ProductID { get; set; }
+
+        [Display(Name = "Issue Details")]
         public string IssuePost { get; set; }
+
+        [Display(Name = "Issue Date")]
         public Nullable<System.DateTime> IssueDate { get; set; }
     
         public virtual Product Product { get; set; }

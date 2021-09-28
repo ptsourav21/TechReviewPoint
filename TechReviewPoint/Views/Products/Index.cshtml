@@ -4,50 +4,69 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1 style="text-align:center">Products</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-align:center">
+    @Html.ActionLink("Add New Product", "Create", "Products", 
+                   new { @class = "btn btn-warning" })  
 </p>
 
+<table class="table">
+    <thead class="table table-dark">
+        <tr style="text-align:center">
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ProductDetails)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ProductImg)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductImg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
 
-@foreach (var item in Model)
-{
-    <div class="container body-content">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="@Html.DisplayFor(modelItem => item.ProductImg)" width="250" height="250" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h5>
-                        <p class="card-text"> @Html.DisplayFor(modelItem => item.ProductDetails)</p>
-                        <a href="~/ProductDetails/ProductDetails" class="btn btn-info">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://s...content-available-to-author-only...h.com/1400x600/?laptop" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a short card.</p>
-                        <a href="#" class="btn btn-info">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://s...content-available-to-author-only...h.com/1400x600/?fridge" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-info">View Details</a>
-                    </div>
-                </div>
-            </div>
+                    @Html.ActionLink("Edit", "Edit", "Products", new { id = item.ProductID },
+                    new { @class = "btn btn-outline-dark" })
+                   
+                    @Html.ActionLink("Details", "Details", "Products", new { id = item.ProductID },
+                    new { @class = "btn btn-outline-success" })
+                   
+                    @Html.ActionLink("Delete", "Delete", "Products", new { id = item.ProductID },
+                    new { @class = "btn btn-outline-danger" })
+   
+                </td>
+            </tr>
+        }
+    </tbody>
 
-        </div>
-    </div>
-}
-
-
+</table>

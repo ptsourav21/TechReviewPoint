@@ -9,51 +9,49 @@
     }
 }
 
-<h2>Index</h2>
+<h1 style="text-align:center">Categories</h1>
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-align:center">
+    @Html.ActionLink("Add New Category", "Create", "Categories",
+                   new { @class = "btn btn-warning" })
 </p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
-            </td>
+    <thead class="table table-dark">
+        <tr style="text-align:center">
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th scope="col">
+                Actions
+            </th>
         </tr>
-        <div class="container body-content">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="https://source.unsplash.com/1400x600/?phone" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <a href="~/ProductDetails/ProductDetails" class="btn btn-info">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-                }
+    </thead>
 
-    </table>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Categories", new { id = item.CategoryID },
+                       new { @class = "btn btn-outline-dark" })
+
+                    @Html.ActionLink("Details", "Details", "Categories", new { id = item.CategoryID },
+                       new { @class = "btn btn-outline-success" })
+
+                    @Html.ActionLink("Delete", "Delete", "Categories", new { id = item.CategoryID },
+                        new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
 
 <p>
     <a href="@Url.Action("Index","Products")">Products</a>
 </p>
-

@@ -56,12 +56,18 @@ namespace TechReviewPoint.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display]
+        [Display(Name ="Contact Number")]
         public int UserPhone { get; set; }
+
+        [Display(Name ="Address")]
         public string UserAdress { get; set; }
+
+        [Display(Name ="Image")]
         public string UserImg { get; set; }
         public Nullable<bool> IsEmailVerified { get; set; }
         public Nullable<System.Guid> ActivationCode { get; set; }
+       
+        [Display(Name ="TP Point")]
         public Nullable<decimal> tp_point { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

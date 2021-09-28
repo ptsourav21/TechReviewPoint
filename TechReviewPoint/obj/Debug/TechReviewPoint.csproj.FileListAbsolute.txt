@@ -572,7 +572,6 @@ E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\bin\System.Web.W
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\bin\Newtonsoft.Json.xml
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\bin\Antlr3.Runtime.pdb
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CoreCompileInputs.cache
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.CopyComplete
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.dll
@@ -661,3 +660,4 @@ E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj
 E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.pdb
 I:\University\Git\Projects\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
 E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
+E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache

@@ -4,48 +4,55 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1 style="text-align:center">Issues</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IssuePost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IssueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th></th>
-    </tr>
+    <thead class="table table-dark">
+        <tr style="text-align:center">
+            <th>
+                @Html.DisplayNameFor(model => model.IssuePost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssuePost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Issues", new { id = item.IssueID },
+                       new { @class = "btn btn-outline-dark" })
+                    @Html.ActionLink("Details", "Details", "Issues", new { id = item.IssueID },
+                        new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("Delete", "Delete", "Issues", new { id = item.IssueID },
+                        new { @class = "btn btn-outline-danger" })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IssuePost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IssueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IssueID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IssueID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IssueID })
-        </td>
-    </tr>
-}
-
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

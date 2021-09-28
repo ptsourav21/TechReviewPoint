@@ -15,10 +15,6 @@ namespace TechReviewPoint.Controllers
     {
         private tech_review_pointEntities db = new tech_review_pointEntities();
 
-
-
-
-
         // GET: Users
         public ActionResult Index()
         {
@@ -256,9 +252,6 @@ namespace TechReviewPoint.Controllers
             return View(info);
         }
 
-
-
-
         public ActionResult UserDashboard()
         {
             string email = Convert.ToString(Session["UserSessionEmail"]);
@@ -267,8 +260,7 @@ namespace TechReviewPoint.Controllers
 
 
         }
-
-       
+  
 
     }
 }

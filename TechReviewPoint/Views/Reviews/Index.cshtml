@@ -2,67 +2,73 @@
 
 @{
     ViewBag.Title = "Index";
-  //  Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+    //  Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h1 style="text-align:center">Reviews</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.review_point)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewPost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th></th>
-    </tr>
+    <thead class="table table-dark">
+        <tr style="text-align:center">
+            <th>
+                @Html.DisplayNameFor(model => model.review_point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.review_point)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewDate)
+                </td>
+                <td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.review_point)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewPost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewDate)
-        </td>
-        <td>
-        
 
-                <img src="@Url.Content(item.Picture)" width="20" height="50" class="card-img-top" alt="...">
+                    <img src="@Url.Content(item.Picture)" width="20" height="50" class="card-img-top" alt="...">
 
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
-        </td>
-    </tr>
-}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Reviews", new { id = item.ReviewID },
+                        new { @class = "btn btn-outline-dark" })
+                    @Html.ActionLink("Details", "Details", "Reviews", new { id = item.ReviewID },
+                          new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("Delete", "Delete", "Reviews", new { id = item.ReviewID },
+                         new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

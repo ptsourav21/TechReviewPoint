@@ -11,6 +11,7 @@ namespace TechReviewPoint.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web;
 
 
@@ -23,12 +24,23 @@ namespace TechReviewPoint.Models
             this.Reviews = new HashSet<Review>();
             this.WishLists = new HashSet<WishList>();
         }
-    
+
+        [Display(Name = "Product ID")]
         public int ProductID { get; set; }
+
+        [Display(Name = "Category ID")]
         public int CategoryID { get; set; }
+
+        [Display(Name = "Product Name")]
         public string ProductName { get; set; }
+
+        [Display(Name = "Product Price")]
         public decimal ProductPrice { get; set; }
+
+        [Display(Name = "Product Details")]
         public string ProductDetails { get; set; }
+        
+        [Display(Name = "Product Image")]
         public string ProductImg { get; set; }
         public HttpPostedFileBase product_img_file { get; set; }
 
