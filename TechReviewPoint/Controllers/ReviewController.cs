@@ -89,17 +89,44 @@ namespace TechReviewPoint.Controllers
             }
 
             //var del = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID==id).ToList();
-            var comments = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID == id).ToList();
+            //  var comments = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID.Equals(id));
+            // var rev = db.Reviews.Find(id);
+            // Review comment = db.Reviews.Find(id);
 
-            /*  Review review = db.Reviews.Find(id);
+            Session["Review_id"] = id;
+
+            Review review = db.Reviews.Find(id);
               if (review == null)
               {
                   return HttpNotFound();
               }
-              return View(review);
-              */
-            return View(comments);
+             // return View(review);
+              
+            return View(review);
         }
+
+        [HttpPost]
+        public ActionResult ReviewDetails()
+        {
+            Comment comment = new Comment();
+
+            comment.UserID = Convert.ToInt32(Session["UserSessionID"]);
+            comment.ReviewID = Convert.ToInt32(Session["Review_id"]);
+            comment.CommentDate = DateTime.Today;
+
+
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.ReviewID = new SelectList(db.Reviews, "ReviewID", "ReviewPost", comment.ReviewID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", comment.UserID);
+            return View(comment);
+        }
+
 
     }
 }
