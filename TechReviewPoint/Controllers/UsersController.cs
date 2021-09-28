@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -29,6 +30,65 @@ namespace TechReviewPoint.Controllers
   
             return View(reviews.ToList());
         }
+        [HttpGet]
+        public ActionResult profileUpdate()
+        {
+            //   if (Session["UserSessionID"] == null)
+            //   return RedirectToAction("Index", "Home");
+            int id = Convert.ToInt32(Session["UserSessionID"]);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+
+        }
+
+        [HttpPost]
+        public ActionResult profileUpdate([Bind(Include = "UserID,UserName,UserEmail,UserPassword,UserPhone,UserAdress,tp_point,UserImg,user_img_file")] User user)
+        {
+
+            string fileName = Path.GetFileNameWithoutExtension(user.user_img_file.FileName);
+            string extention = Path.GetExtension(user.user_img_file.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+
+            user.UserImg = "~/profile_pic/" + fileName;
+
+            fileName = Path.Combine(Server.MapPath("~/profile_pic/"), fileName);
+
+            user.user_img_file.SaveAs(fileName);
+
+
+
+            try
+            {
+                var cu = db.Users.Find(Convert.ToInt32(Session["UserSessionID"]));
+                // user.UserEmail = "" + cu.UserEmail;
+                // user.Rating = cu.Rating;
+                //db.Entry(user).State = EntityState.Modified;
+                db.Database.ExecuteSqlCommand("Update Users set UserName = '" + user.UserName + "' , UserPassword = '" +
+                   user.UserPassword + "', UserImg = '" + user.UserImg + "', UserPhone = '" + user.UserPhone + "', UserAdress = '" + user.UserAdress + "' where UserID = " + cu.UserID);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return Content(e.ToString());
+            }
+            // Session.Abandon();
+            //Session["UserSessionName"] = user.UserName;
+            // Session["UserSessionID"] = user.UserID;
+
+            return RedirectToAction("Profile", "Users");
+        }
+
+
+
 
         // GET: Users/Details/5
         public ActionResult Details(int? id)
@@ -130,14 +190,6 @@ namespace TechReviewPoint.Controllers
         }
 
 
-
-
-
-
-
-
-
-
         // GET: Users
         [HttpGet]
         public ActionResult Registration()
@@ -175,25 +227,24 @@ namespace TechReviewPoint.Controllers
                     var user = db.Users.Where(u => u.UserEmail.Equals(login.UserEmail)
                      && u.UserPassword.Equals(login.UserPassword)).FirstOrDefault();
 
-                    if (user != null)
-                    {
+                if (user != null)
+                {
                     Session["UserSessionEmail"] = user.UserEmail;
                     Session["UserSessionID"] = user.UserID;
                     Session["UserSessionName"] = user.UserName;
 
                     //return RedirectToAction("UserDashboard", new { email = user.UserEmail });
-                  //  return RedirectToAction("UserDashboard");
+                    //  return RedirectToAction("UserDashboard");
                     return RedirectToAction("ProductDashboard", "ProductDetails", new { area = "" });
-
 
                 }
                 else
-                    {
-                       
-                        ViewBag.Loginfailed = "User not found or Password mismatch";
-                        return View();
-                      
-                    }
+                {
+
+                    ViewBag.Loginfailed = "User not found or Password mismatch";
+                    return View();
+
+                }
 
                 }
             
@@ -205,59 +256,11 @@ namespace TechReviewPoint.Controllers
             return RedirectToAction("Index","Home");
         }
 
-
-        [HttpGet]
-        public ActionResult UpdateProfile(int? id)
-        {
-            /*                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Category category = db.Categories.Find(id);
-                if (category == null)
-                {
-                    return HttpNotFound();
-                } 
-                */
-                return View();
-            }
-
-
-       /* public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-       */
-
-
-        [HttpPost]
-        public ActionResult UpdateProfile(Update_profile user)
-        {
-
-                string email = Convert.ToString(Session["UserSessionEmail"]);
-
-                var info = db.Users.Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
-
-            
-
-            return View(info);
-        }
-
         public ActionResult UserDashboard()
         {
             string email = Convert.ToString(Session["UserSessionEmail"]);
             var info = db.Users.Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
             return View(info);
-
 
         }
   

@@ -16,8 +16,6 @@ namespace TechReviewPoint.Controllers
         private tech_review_pointEntities db = new tech_review_pointEntities();
 
         
-
-
         [HttpGet]
         public ActionResult ReviewsInProductDetails()
         {

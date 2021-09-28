@@ -36,7 +36,6 @@ namespace TechReviewPoint.Controllers
         public ActionResult Details(int? id)
         {
 
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -47,7 +46,6 @@ namespace TechReviewPoint.Controllers
                 return HttpNotFound();
             }
             return View(review);
-
 
         }
 

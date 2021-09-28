@@ -12,6 +12,7 @@ namespace TechReviewPoint.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     public partial class User
     {
@@ -64,6 +65,9 @@ namespace TechReviewPoint.Models
 
         [Display(Name ="Image")]
         public string UserImg { get; set; }
+
+        public HttpPostedFileBase user_img_file { get; set; }
+
         public Nullable<bool> IsEmailVerified { get; set; }
         public Nullable<System.Guid> ActivationCode { get; set; }
        

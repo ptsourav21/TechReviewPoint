@@ -376,10 +376,12 @@
     <Content Include="Views\ProductDetails\ProductDashboard.cshtml" />
     <Content Include="Views\ProductDetails\AddingReview.cshtml" />
     <Content Include="Views\Review\ReviewDetails.cshtml" />
+    <Content Include="Views\Users\profileUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Product_Image\" />
+    <Folder Include="profile_pic\" />
     <Folder Include="Review_Image\" />
   </ItemGroup>
   <ItemGroup>
