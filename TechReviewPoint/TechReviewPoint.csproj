@@ -374,6 +374,8 @@
     <Content Include="Views\Review\ReviewsInProductDetails.cshtml" />
     <Content Include="Views\Issue\IssuesInProductDetails.cshtml" />
     <Content Include="Views\ProductDetails\ProductDashboard.cshtml" />
+    <Content Include="Views\ProductDetails\AddingReview.cshtml" />
+    <Content Include="Views\Review\ReviewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

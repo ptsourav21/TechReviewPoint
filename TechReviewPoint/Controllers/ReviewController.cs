@@ -21,10 +21,12 @@ namespace TechReviewPoint.Controllers
         [HttpGet]
         public ActionResult ReviewsInProductDetails()
         {
+            //  @Html.ActionLink("Review", "ReviewsInProductDetails", "Review")
             //var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User);
+            //Console.WriteLine(ID);
             int id = Convert.ToInt32(Session["product_ID"]);
 
-            var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id)).ToList();
+            var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
 
            // var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id));
 
@@ -64,7 +66,7 @@ namespace TechReviewPoint.Controllers
 
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ReviewsInProductDetails","Review");
             }
 
 
@@ -72,9 +74,32 @@ namespace TechReviewPoint.Controllers
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", review.UserID);
             // ModelState.Clear();
             return View(review);
-
+          //  return RedirectToAction("")
 
            // return View();
         }
+
+        [HttpGet]
+        public ActionResult ReviewDetails(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            //var del = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID==id).ToList();
+            var comments = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID == id).ToList();
+
+            /*  Review review = db.Reviews.Find(id);
+              if (review == null)
+              {
+                  return HttpNotFound();
+              }
+              return View(review);
+              */
+            return View(comments);
+        }
+
     }
 }

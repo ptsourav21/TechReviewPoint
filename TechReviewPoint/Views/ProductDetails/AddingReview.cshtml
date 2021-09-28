@@ -1,0 +1,107 @@
+﻿@using TechReviewPoint.Models
+@model TechReviewPoint.Models.Review
+
+@{
+    ViewBag.Title = "AddingReview";
+    Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+}
+
+<h2>AddingReview</h2>
+
+@using (Html.BeginForm("AddingReview", "ProductDetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <form class="row g-3">
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Review</label>
+
+            @Html.EditorFor(model => model.ReviewPost, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ReviewPost, "", new { @class = "text-danger" })
+
+            <input type="text" class="form-control" id="inputAddress" placeholder="Write a review">
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="review_img_file" />
+
+                <!--
+                     @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
+                     @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
+                -->
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Upload Pictures</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+
+
+        <div class="col-12">
+            <input type="submit" value="Post" class="btn btn-default" />
+        </div>
+    </form>
+}
+<!--Post a Review Ends Starts Here-->
+<!--Review Cards Starts Here-->
+@foreach (var item in ViewData["re-view"] as IEnumerable<Review>)
+{
+
+    <div class="card my-4">
+        <h5 class="card-header">@Session["UserSessionName"]</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Session["product_ID"]</h5>
+            <p class="card-text">
+                @item.ReviewPost
+            </p>
+            <p class="btn btn-info">
+                @Html.ActionLink("View Details", "ReviewDetails", new { id = item.ReviewID })
+            </p>
+        </div>
+    </div>
+
+
+}
+
+
+
+<div class="card my-4">
+    <h5 class="card-header">User's Name</h5>
+    <div class="card-body">
+        <h5 class="card-title">Review</h5>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <a href="#" class="btn btn-info">View Details</a>
+    </div>
+</div>
+
+<div class="card my-4">
+    <h5 class="card-header">User's Name</h5>
+    <div class="card-body">
+        <h5 class="card-title">Review</h5>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <a href="#" class="btn btn-info">View Details</a>
+    </div>
+</div>
+
+<div class="card my-4">
+    <h5 class="card-header">User's Name</h5>
+    <div class="card-body">
+        <h5 class="card-title">Review</h5>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <a href="#" class="btn btn-info">View Details</a>
+    </div>
+</div>
+
+<div class="card my-4">
+    <h5 class="card-header">User's Name</h5>
+    <div class="card-body">
+        <h5 class="card-title">Review</h5>
+        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <a href="#" class="btn btn-info">View Details</a>
+    </div>
+</div>
+
+
