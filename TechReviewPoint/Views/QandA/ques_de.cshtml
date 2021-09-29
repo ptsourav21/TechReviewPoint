@@ -1,0 +1,28 @@
+﻿@model TechReviewPoint.Models.Question
+@{
+    ViewBag.Title = "ques_de";
+    //Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+}
+
+<h2>ques_de</h2>
+
+<!--question-->
+<div class="card my-4">
+    <h5 class="card-header">
+        @Html.DisplayFor(model => model.User.UserName)
+    </h5>
+    <div class="card-body">
+        <h5 class="card-title">this</h5>
+        <p class="card-text">
+            @Html.DisplayFor(model => model.Problem)
+        </p>
+        <p>
+            @Html.DisplayFor(model => model.QuestionDate)
+        </p>
+
+        <p class="btn btn-info">
+            @Html.ActionLink("View Details", "ans")
+        </p>
+    </div>
+</div>
+<!--end of question-->

@@ -62,25 +62,34 @@ namespace TechReviewPoint.Controllers
             }
 
             Session["Review_id"] = id;
+            var com = db.Comments.SqlQuery("Select  *from Comments").ToList<Comment>();
+            //var com = db.Comments.Include(r => r.Review).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
+
+            Comment pro = db.Comments.Find(id);
+
+
+            ViewData["co-ments"] = com;
+            return View(pro);
 
             //var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
 
 
 
-            var com = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID==id).ToList();
+          //  var com = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID==id).ToList();
             /*
             var applyJobs = (from a in db.Reviews
                              join s in db.Users on a.UserID equals s.UserID
                              where a.ReviewID == id
                              select a).ToList();
             */
-            ViewData["co-ments"] = com;
-            return View();
+            //ViewData["co-ments"] = com;
+           // return View();
         }
 
         [HttpPost]
         public ActionResult ReviewDetails(Comment comment)
         {
+
             comment.UserID = Convert.ToInt32(Session["UserSessionID"]);
             comment.ReviewID = Convert.ToInt32(Session["Review_id"]);
             comment.CommentDate = DateTime.Now;

@@ -47,36 +47,41 @@ namespace TechReviewPoint.Controllers
             return View(question);
         }
 
-        [HttpGet]
-        public ActionResult ans(int? id)
+        public ActionResult ques_de(int ? id)
         {
-            //  var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             Session["Question_Id"] = id;
+            Question q = db.Questions.Find(id);
+            if (q == null)
+            {
+                return HttpNotFound();
+            }
 
+            return View(q);
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult ans()
+        {
+            //  var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+
+            int id = Convert.ToInt32(Session["Question_Id"]);
+
+            var answ = db.Answers.Include(i => i.Question).Include(i => i.User).Where(i => i.QuestionID.Equals(id)).ToList();
+            ViewData["ANS"] = answ;
+            return View();
             //var answ = db.Answers.Include(a => a.Question).Include(a => a.User).Where(a => a.QuestionID.Equals(id)).ToList();
 
-            var answ = db.Answers.SqlQuery("Select  *from Answers").ToList<Answer>();
+           // var answ = db.Answers.SqlQuery("Select  *from Answers").ToList<Answer>();
 
-/*
-            var applyJobs = (from a in db.Answers
-                             join s in db.Questions on a.QuestionID equals s.QuestionID
-                             where s.QuestionID == id
-                             select a).ToList();
-*/
-           // return View(applyJobs);
-
-            ViewData["ANS"] = answ;
-
-            //var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
-
-           // var qu = db.Questions.Include(q => q.User).Where(q => q.QuestionID.Equals(id)).FirstOrDefault();
-//var qu = db.Answers.Include(a => a.Question).Include(a => a.User).Where(a => a.QuestionID.Equals(id)).ToList();
-
+           // ViewData["ANS"] = answ;
             return View();
 
         }

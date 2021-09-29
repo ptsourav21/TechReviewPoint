@@ -660,3 +660,4 @@ E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechRe
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.dll
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.pdb
 E:\3.2 AUST\SD Project\TRPoint2\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache
+E:\Project\All my vs works\tech_review_point\TechReviewPoint\TechReviewPoint\obj\Debug\TechReviewPoint.csproj.AssemblyReference.cache

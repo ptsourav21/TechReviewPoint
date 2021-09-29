@@ -1,18 +1,29 @@
 ﻿@using TechReviewPoint.Models
 @model TechReviewPoint.Models.Comment
+
 @{
     ViewBag.Title = "ReviewDetails";
+    Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 }
+
+<h2>ReviewDetails</h2>
+
 <!--Review Images Starts Here-->
 <div class="container body-content">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+
                 <img src="@Url.Content(Model.Review.Picture)" width="250" height="250" />
+
+                <img src="https://source.unsplash.com/1400x600/?gadget,review" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="https://source.unsplash.com/1400x600/?gadget,review" class="d-block w-100" alt="...">
-            </div>            
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1400x600/?gadget,review" class="d-block w-100" alt="...">
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,6 +39,7 @@
     <div class="card my-4">
         <h5 class="card-header">
             @Html.DisplayFor(model => model.User.UserName)
+
         </h5>
         <div class="card-body">
             <h5 class="card-title">Review</h5>
@@ -39,7 +51,6 @@
     </div>
     <!--Main Review Ends Here-->
     <!--Give Rating Starts Here-->
-
     <select class="form-select d-inline-flex p-2" aria-label="Default select example">
         <option selected>Rate this review</option>
         <option value="1">One</option>
@@ -52,64 +63,55 @@
     <!--Give Rating Ends Here-->
     <!--Post a Comment starts Here-->
 
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comment1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <h4>Question</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <form class="row g-3">
+            <div class="col-lg-12">
+                <h5>Comment</h5>
+
                 @Html.EditorFor(model => model.Comment1, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Comment1, "", new { @class = "text-danger" })
+
             </div>
-        </div>
+
+            <div class="col-12">
+                <input type="submit" value="Post" class="btn btn-success" />
+            </div>
+        </form>
     }
-    <div class="input-group mb-3 my-4">
-        <input type="text" class="form-control" placeholder="Write a Comment" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Post</button>
-    </div>
+
+    @*
+        <div class="input-group mb-3 my-4">
+            <input type="text" class="form-control" placeholder="Write a Comment" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Post</button>
+        </div>
+    *@
     <!--Post a Comment ends Here-->
     <!--Comment Cards of Other User Starts Here-->
 
     @foreach (var item in ViewData["co-ments"] as IEnumerable<Comment>)
     {
-
         <div class="card my-4">
             <div class="card-header">
                 @item.User.UserName
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <p>
-                        @item.Comment1
-                    </p>
-                    <p>
-                        @item.CommentDate
-                    </p>
+                    <p>@item.Comment1</p>
+                    <p>@item.CommentDate</p>
                 </blockquote>
             </div>
-        </div>    
+        </div>
+
 
     }
-
-
-
-    <div class="card my-4">
-        <div class="card-header">
-            User Name
-        </div>
-        <div class="card-body">
-            <blockquote class="blockquote mb-0">
-                <p>Comment</p>
-            </blockquote>
-        </div>
-    </div>
-
-
-
-
-
 
 
     <div class="card my-4">

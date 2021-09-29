@@ -389,6 +389,7 @@
     <Content Include="Views\QandA\ques.cshtml" />
     <Content Include="Views\ProductDetails\search.cshtml" />
     <Content Include="Views\QandA\ans.cshtml" />
+    <Content Include="Views\QandA\ques_de.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
