@@ -1,0 +1,66 @@
+﻿@using TechReviewPoint.Models
+@model TechReviewPoint.Models.TempSearch
+@{
+    ViewBag.Title = "search";
+   // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+}
+
+<h2>search</h2>
+<div class="row">
+    <hr />
+    <div class="col-lg-4"> </div>
+    <div class="col-lg-4">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { placeholder = " Enter product name", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Search" class="btn btn-success btn-block" />
+                    </div>
+
+                </div>
+
+
+            </div>
+        }
+    </div>
+    <div class="col-lg-4"> </div>
+</div>
+<div class="hot-product">
+    <div class="container">
+        <div class="all-tag">
+            <h2>Search Result</h2>
+        </div>
+        <div class="row">
+            @foreach (var ad in ViewData["Ads"] as IEnumerable<Product>)
+            {
+                
+                    <div class="col-md-4">
+                        <div class="hot-item-top">
+                            <img src="@Url.Content(ad.ProductImg)" class="img-fluid" alt="pic">
+
+                        </div>
+                        <div class="hot-item-bottom">
+                            <h5>@ad.ProductName</h5>
+                            <h6>Price @ad.ProductPrice</h6>
+                        </div>
+                    </div>
+                
+            }
+
+        </div>
+
+    </div>
+</div>

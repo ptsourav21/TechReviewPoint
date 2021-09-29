@@ -195,6 +195,7 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>Access.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TempSearch.cs" />
     <Compile Include="Models\Update_profile.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>Access.tt</DependentUpon>
@@ -386,6 +387,7 @@
     <Content Include="Views\Questions\Edit.cshtml" />
     <Content Include="Views\Questions\Index.cshtml" />
     <Content Include="Views\QandA\ques.cshtml" />
+    <Content Include="Views\ProductDetails\search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
