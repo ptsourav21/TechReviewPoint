@@ -31,7 +31,7 @@
             <div class="col-md-10">
                 <input type="file" name="review_img_file" />
 
-               
+
             </div>
         </div>
 
@@ -39,17 +39,18 @@
             <input type="submit" value="Post" class="btn btn-default" />
         </div>
     </form>
-   
+
 }
 <!--Post a Review Ends Starts Here-->
 <!--Review Cards Starts Here-->
+
 @foreach (var item in ViewData["re-view"] as IEnumerable<Review>)
 {
 
     <div class="card my-4">
         <h5 class="card-header">
             @item.User.UserName
-          
+
         </h5>
         <div class="card-body">
             <h5 class="card-title">

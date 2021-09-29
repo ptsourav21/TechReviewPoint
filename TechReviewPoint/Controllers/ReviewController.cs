@@ -19,21 +19,11 @@ namespace TechReviewPoint.Controllers
         [HttpGet]
         public ActionResult ReviewsInProductDetails()
         {
-            //  @Html.ActionLink("Review", "ReviewsInProductDetails", "Review")
-            //var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User);
-            //Console.WriteLine(ID);
             int id = Convert.ToInt32(Session["product_ID"]);
-
             var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
-
-           // var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id));
-
             ViewData["re-view"] = re;
-            // return View(reviews.ToList());
             return View();
         }
-
-
 
 
         // GET: Review
@@ -86,45 +76,87 @@ namespace TechReviewPoint.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            //var del = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID==id).ToList();
-            //  var comments = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID.Equals(id));
-            // var rev = db.Reviews.Find(id);
-            // Review comment = db.Reviews.Find(id);
-
             Session["Review_id"] = id;
 
+            /*
             Review review = db.Reviews.Find(id);
-              if (review == null)
+
+            Session["Review_post"] = review.ReviewPost;
+            Session["pic"] = review.Picture;
+            Session["name"] = review.User.UserName;
+            
+           // Review d = db.Reviews.SqlQuery("Select * from Deals where BookingID = " + Convert.ToInt32(Session["bookingID"])).FirstOrDefault();
+
+            if (review == null)
               {
                   return HttpNotFound();
               }
-             // return View(review);
-              
-            return View(review);
+            */
+
+            // var ads = db.Advertisements.SqlQuery("Select *from Advertisements where PriorityStatus = 1 or PriorityStatus = 2")
+            //     .ToList<Advertisement>();
+            // return View(review);
+
+           // var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+
+            var com = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID==id).ToList();
+            ViewData["co-ments"] = com;
+            return View();
         }
 
         [HttpPost]
-        public ActionResult ReviewDetails()
+        public ActionResult ReviewDetails(Comment comment)
         {
-            Comment comment = new Comment();
 
             comment.UserID = Convert.ToInt32(Session["UserSessionID"]);
             comment.ReviewID = Convert.ToInt32(Session["Review_id"]);
             comment.CommentDate = DateTime.Today;
 
-
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ReviewDetails","Review");
             }
 
-            ViewBag.ReviewID = new SelectList(db.Reviews, "ReviewID", "ReviewPost", comment.ReviewID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", comment.UserID);
+          //  ViewBag.ReviewID = new SelectList(db.Reviews, "ReviewID", "ReviewPost", comment.ReviewID);
+           // ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", comment.UserID);
             return View(comment);
         }
 
+        [HttpGet]
+        public ActionResult productIssues()
+        {
+            int id = Convert.ToInt32(Session["product_ID"]);
+          //  var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+          
+            
+            var issues = db.Issues.Include(i => i.Product).Include(i => i.User).Where(i => i.ProductID.Equals(id)).ToList();
+            // return View(issues.ToList());
+            ViewData["is-sue"] = issues;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult productIssues(Issue issue)
+        {
+            issue.UserID = Convert.ToInt32(Session["UserSessionID"]);
+            //review.review_img_file.SaveAs(fileName);
+            issue.IssueDate = DateTime.Today;
+            issue.ProductID = Convert.ToInt32(Session["product_ID"]);
+
+            if (ModelState.IsValid)
+            {
+                db.Issues.Add(issue);
+                db.SaveChanges();
+                return RedirectToAction("productIssues", "Review");
+            }
+
+            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", issue.ProductID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", issue.UserID);
+            return View(issue);
+        }
 
     }
 }

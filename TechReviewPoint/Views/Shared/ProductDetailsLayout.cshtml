@@ -45,7 +45,10 @@
             @Html.ActionLink("Review", "ReviewsInProductDetails", "Review", null,
             new { @class = "btn btn-outline-dark" })
         </a>
-        <a class="nav-link" href="~/Issue/IssuesInProductDetails">Issues</a>
+        <a class="nav-link">
+            @Html.ActionLink("Issue", "productIssues", "Review", null,
+             new { @class = "btn btn-outline-dark" })
+        </a>
     </nav>
     <div class"my-4"></div>
     @RenderBody()
