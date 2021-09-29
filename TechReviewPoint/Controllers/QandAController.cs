@@ -46,5 +46,50 @@ namespace TechReviewPoint.Controllers
 
             return View(question);
         }
+
+        [HttpGet]
+        public ActionResult ans(int? id)
+        {
+            //  var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Session["Question_Id"] = id;
+
+            //var answ = db.Answers.Include(a => a.Question).Include(a => a.User).Where(a => a.QuestionID.Equals(id)).ToList();
+
+          //  var answ = db.Answers.SqlQuery("Select  *from Answers").ToList<Answer>();
+
+
+            var applyJobs = (from a in db.Answers
+                             join s in db.Questions on a.QuestionID equals s.QuestionID
+                             where s.QuestionID == id
+                             select a).ToList();
+
+           // return View(applyJobs);
+
+            ViewData["ANS"] = applyJobs;
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult ans(Answer answer)
+        {
+            answer.UserID = Convert.ToInt32(Session["UserSessionID"]);
+            answer.QuestionID= Convert.ToInt32(Session["Question_Id"]);
+            answer.AnswerDate = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                db.Answers.Add(answer);
+                db.SaveChanges();
+                return RedirectToAction("ans", "QandA");
+            }
+
+            return View(answer);
+        }
     }
 }

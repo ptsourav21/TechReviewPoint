@@ -62,7 +62,18 @@ namespace TechReviewPoint.Controllers
             }
 
             Session["Review_id"] = id;
+
+            //var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
+
+
+
             var com = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID==id).ToList();
+            /*
+            var applyJobs = (from a in db.Reviews
+                             join s in db.Users on a.UserID equals s.UserID
+                             where a.ReviewID == id
+                             select a).ToList();
+            */
             ViewData["co-ments"] = com;
             return View();
         }

@@ -1,0 +1,77 @@
+﻿@using TechReviewPoint.Models
+@model TechReviewPoint.Models.Answer
+
+@{
+    ViewBag.Title = "ans";
+  //  Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+}
+
+<h2>ans</h2>
+<!--question-->
+<div class="card my-4">
+    <h5 class="card-header">
+        @Html.DisplayFor(model => model.User.UserName)
+    </h5>
+    <div class="card-body">
+        <h5 class="card-title">this</h5>
+        <p class="card-text">
+            @Html.DisplayFor(model => model.Question.Problem)
+        </p>
+        <p>
+            @Html.DisplayFor(model => model.Question.QuestionDate)
+        </p>
+    </div>
+</div>
+<!--end of question-->
+<!--adding ans-->
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Question</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <form class="row g-3">
+        <div class="col-lg-12">
+            <h5>Answer Here</h5>
+
+            @Html.EditorFor(model => model.Solve, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Solve, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-12">
+            <input type="submit" value="Post" class="btn btn-success" />
+        </div>
+    </form>
+
+}
+<!--adding ans-->
+<!--Showing ans-->
+
+@foreach (var item in ViewData["ANS"] as IEnumerable<Answer>)
+{
+
+    <div class="card my-4">
+        <h5 class="card-header">
+            @item.User.UserName
+
+        </h5>
+        <div class="card-body">
+            <h5 class="card-title">
+                @item.Solve
+            </h5>
+            <p class="card-text">
+                @item.AnswerDate
+            </p>
+            <p class="btn btn-info">
+                @Html.ActionLink("View Details", "ReviewDetails", new { id = item.QuestionID })
+            </p>
+        </div>
+    </div>
+
+}
+
+<!--end of show-->
