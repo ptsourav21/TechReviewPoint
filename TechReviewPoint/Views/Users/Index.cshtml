@@ -39,35 +39,39 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr style="text-align:center">
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserPassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserImg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tp_point)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", "Users", new { id = item.UserID },
-               new { @class = "btn btn-outline-success" })
-                @Html.ActionLink("Delete", "Delete", "Users", new { id = item.UserID },
-              new { @class = "btn btn-outline-danger" })
-            </td>
-        </tr>
+            <tr style="text-align:center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserPassword)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserImg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tp_point)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Users", new { id = item.UserID },
+                   new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("Delete", "Delete", "Users", new { id = item.UserID },
+                  new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<p style="text-align:center">
+    @Html.ActionLink("Back To Admin Panel", "AdminDashboard", "Admins", null,
+    new { @class = "btn btn-warning" })
+</p>

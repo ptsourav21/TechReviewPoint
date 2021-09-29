@@ -2,65 +2,54 @@
 @model TechReviewPoint.Models.TempSearch
 @{
     ViewBag.Title = "search";
-   // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+    // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 }
 
-<h2>search</h2>
-<div class="row">
+
+<div class="form-group">
     <hr />
-    <div class="col-lg-4"> </div>
     <div class="col-lg-4">
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
+            <div class="container body-content" style="text-align:center">
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { placeholder = " Enter product name", @class = "form-control" } })
+                <div class="container body-content" style="text-align:center">
+                    <div class="col-sm-10 align-middle">
+                        @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { placeholder = " Enter product name", @class = "form-control", style = "text-align:center" } })
                         @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
                         <input type="submit" value="Search" class="btn btn-success btn-block" />
                     </div>
-
                 </div>
 
 
             </div>
         }
     </div>
-    <div class="col-lg-4"> </div>
 </div>
-<div class="hot-product">
-    <div class="container">
-        <div class="all-tag">
-            <h2>Search Result</h2>
-        </div>
-        <div class="row">
-            @foreach (var ad in ViewData["Ads"] as IEnumerable<Product>)
-            {
-                
-                    <div class="col-md-4">
-                        <div class="hot-item-top">
-                            <img src="@Url.Content(ad.ProductImg)" class="img-fluid" alt="pic">
 
-                        </div>
-                        <div class="hot-item-bottom">
-                            <h5>@ad.ProductName</h5>
-                            <h6>Price @ad.ProductPrice</h6>
-                        </div>
+<h2 style="text-align:center">Search Result</h2>
+<hr />
+<div class="container body-content">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var ad in ViewData["Ads"] as IEnumerable<Product>)
+        {
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="@Url.Content(ad.ProductImg)" width="250" height="250" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@ad.ProductName</h5>
+                        <p class="card-text">Price @ad.ProductPrice</p>
+                        @Html.ActionLink("Details", "ProductDetails", "ProductDetails", new { id = ad.ProductID },
+                        new { @class = "btn btn-dark" })
                     </div>
-                
-            }
-
-        </div>
-
+                </div>
+            </div>
+        }
     </div>
 </div>
+

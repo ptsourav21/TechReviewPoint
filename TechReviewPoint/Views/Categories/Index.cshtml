@@ -52,6 +52,7 @@
 
 </table>
 
-<p>
-    <a href="@Url.Action("Index","Products")">Products</a>
+<p style="text-align:center">
+    @Html.ActionLink("Back To Admin Panel", "AdminDashboard", "Admins", null,
+    new { @class = "btn btn-warning" })
 </p>

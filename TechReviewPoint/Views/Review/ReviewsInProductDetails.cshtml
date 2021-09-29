@@ -18,8 +18,8 @@
     @Html.AntiForgeryToken()
 
     <form class="row g-3">
-        <div class="col-12">
-            <label for="inputAddress" class="form-label">Review</label>
+        <div class="col-lg-12">
+            <h5>Add a Review</h5>
 
             @Html.EditorFor(model => model.ReviewPost, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ReviewPost, "", new { @class = "text-danger" })
@@ -27,16 +27,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <h5>Add a Image</h5>
             <div class="col-md-10">
                 <input type="file" name="review_img_file" />
-
-
             </div>
         </div>
 
         <div class="col-12">
-            <input type="submit" value="Post" class="btn btn-default" />
+            <input type="submit" value="Post" class="btn btn-success" />
         </div>
     </form>
 
