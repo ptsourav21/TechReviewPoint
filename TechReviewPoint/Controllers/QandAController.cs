@@ -60,17 +60,23 @@ namespace TechReviewPoint.Controllers
 
             //var answ = db.Answers.Include(a => a.Question).Include(a => a.User).Where(a => a.QuestionID.Equals(id)).ToList();
 
-          //  var answ = db.Answers.SqlQuery("Select  *from Answers").ToList<Answer>();
+            var answ = db.Answers.SqlQuery("Select  *from Answers").ToList<Answer>();
 
-
+/*
             var applyJobs = (from a in db.Answers
                              join s in db.Questions on a.QuestionID equals s.QuestionID
                              where s.QuestionID == id
                              select a).ToList();
-
+*/
            // return View(applyJobs);
 
-            ViewData["ANS"] = applyJobs;
+            ViewData["ANS"] = answ;
+
+            //var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
+
+           // var qu = db.Questions.Include(q => q.User).Where(q => q.QuestionID.Equals(id)).FirstOrDefault();
+//var qu = db.Answers.Include(a => a.Question).Include(a => a.User).Where(a => a.QuestionID.Equals(id)).ToList();
+
             return View();
 
         }
