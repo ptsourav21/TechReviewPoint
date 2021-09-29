@@ -19,18 +19,30 @@
 
     <form class="row g-3">
         <div class="col-lg-12">
-            <h5>Add a Review</h5>
-
-            @Html.EditorFor(model => model.ReviewPost, new { htmlAttributes = new { @class = "form-control" } })
+            <br />
+            <h5>Post a Review</h5>
+            @Html.EditorFor(model => model.ReviewPost,
+                new
+                     {
+                         htmlAttributes = new
+                         {
+                             placeholder = "What you think about this product?",
+                   @class = "form-control"
+                         }
+                     })
+           
             @Html.ValidationMessageFor(model => model.ReviewPost, "", new { @class = "text-danger" })
 
         </div>
 
         <div class="form-group">
+            <br />
             <h5>Add a Image</h5>
+            <br />
             <div class="col-md-10">
                 <input type="file" name="review_img_file" />
             </div>
+            <br />
         </div>
 
         <div class="col-12">
@@ -58,8 +70,8 @@
             <p class="card-text">
                 @item.ReviewPost
             </p>
-            <p class="btn btn-info">
-                @Html.ActionLink("View Details", "ReviewDetails", new { id = item.ReviewID })
+            <p>
+                @Html.ActionLink("View Details", "ReviewDetails", new { id = item.ReviewID }, new { @class = "btn btn-dark" })
             </p>
         </div>
     </div>

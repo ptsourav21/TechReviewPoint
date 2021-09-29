@@ -4,25 +4,25 @@
     //Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 }
 
-<h2>ques_de</h2>
+<h2 style="text-align:center">Question</h2>
+<div class="container body-content">
+    <!--question-->
+    <div class="card my-4">
+        <h3 class="card-header">
+            @Html.DisplayFor(model => model.User.UserName)
+        </h3>
+        <div class="card-body">
+            <h5>
+                @Html.DisplayFor(model => model.Problem)
+            </h5>
+            <p>
+                Posted on @Html.DisplayFor(model => model.QuestionDate)
+            </p>
 
-<!--question-->
-<div class="card my-4">
-    <h5 class="card-header">
-        @Html.DisplayFor(model => model.User.UserName)
-    </h5>
-    <div class="card-body">
-        <h5 class="card-title">this</h5>
-        <p class="card-text">
-            @Html.DisplayFor(model => model.Problem)
-        </p>
-        <p>
-            @Html.DisplayFor(model => model.QuestionDate)
-        </p>
-
-        <p class="btn btn-info">
-            @Html.ActionLink("View Details", "ans")
-        </p>
+            <p >
+                @Html.ActionLink("View Answers", "ans",null, new { @class = "btn btn-dark" })
+            </p>
+        </div>
     </div>
+    <!--end of question-->
 </div>
-<!--end of question-->

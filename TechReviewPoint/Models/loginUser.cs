@@ -20,7 +20,7 @@ namespace TechReviewPoint.Models
         [Compare("UserPassword",ErrorMessage ="Password Not Matched")]
         public string UserPassword { get; set; }
 
-        public string ConString = @"data source=LAPTOP-ENI18MKB;initial catalog=tech_review_point;integrated security=True;pooling=False;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+        public string ConString = @"data source=TANVIR\SQLEXPRESS;initial catalog=tech_review_point;integrated security=True;pooling=False;MultipleActiveResultSets=True;App=EntityFramework&quot;";
 
     }
 }
