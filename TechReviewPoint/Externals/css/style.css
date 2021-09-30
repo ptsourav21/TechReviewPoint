@@ -1747,7 +1747,7 @@ input.form-control1.icon {
 /*-- //tables--*/
 /*-- registration --*/
 .signin-form {
-	background: #fafdfd;
+	background: #ddd;
     padding: 3em 2em;
     text-align: center;
      width: 31%;
@@ -1807,7 +1807,7 @@ input.form-control1.icon {
     border: none;
     color: #FFFFFF;
     cursor: pointer;
-    background: #e53238;
+    background: #212121;
     box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
     font-weight: 600;
 	
@@ -1887,7 +1887,7 @@ margin: 0.5em 0 1.5em 0;
     letter-spacing: 1px;
 }
 .pages_agile_info_w3l{
-	    background: url(../images/bottom.jpg)no-repeat center;
+	  //  background: url(../images/bottom.jpg)no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1896,7 +1896,7 @@ margin: 0.5em 0 1.5em 0;
     min-height:800px
 }
 .over_lay_agile_pages_w3ls {
-    background: url(../images/overlay.png)repeat;
+     // background: url(../images/overlay.png)repeat;
       padding: 8em 3em 5.5em 3em;
 }
 .registration h6 a {

@@ -134,6 +134,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\IssuesController.cs" />
+    <Compile Include="Controllers\PendingsController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\QandAController.cs" />
@@ -393,6 +394,11 @@
     <Content Include="Views\QandA\ques_de.cshtml" />
     <Content Include="Views\ProductDetails\chart.cshtml" />
     <Content Include="Views\ProductDetails\wishing.cshtml" />
+    <Content Include="Views\Pendings\Create.cshtml" />
+    <Content Include="Views\Pendings\Delete.cshtml" />
+    <Content Include="Views\Pendings\Details.cshtml" />
+    <Content Include="Views\Pendings\Edit.cshtml" />
+    <Content Include="Views\Pendings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -125,6 +125,23 @@ namespace TechReviewPoint.Controllers
             }
             ViewBag.issue = total_issue;
 
+            var total_pending = ("SELECT COUNT(*) FROM Pendings");
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(abc.ConString))
+                //abc from login.cs
+                {
+                    SqlCommand cm = new SqlCommand(total_pending, connection);
+                    connection.Open();
+                    total_pending = cm.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                total_pending = e.ToString();
+            }
+            ViewBag.pending = total_pending;
 
             return View();
         }

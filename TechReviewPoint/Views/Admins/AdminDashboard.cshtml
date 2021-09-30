@@ -1,7 +1,7 @@
 ﻿@model TechReviewPoint.Models.Admin
 
 @{
-    Layout = null;
+     Layout = null;
     if (Session["AdminSessionEmail"] == null)
     {
         Response.Redirect("~/Admins/AdminLogin");
@@ -15,6 +15,7 @@
     var product = ViewBag.product;
     var issue = ViewBag.issue;
     var category = ViewBag.category;
+    var pending = ViewBag.pending;
 
 }
 <!DOCTYPE html>
@@ -98,7 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <div class="ca-content">
                                     <h4 class="ca-main">
-                                      @user</h4>
+                                        @user
+                                    </h4>
                                     <h3 class="ca-sub">USers</h3>
                                 </div>
                             </a>
@@ -139,6 +141,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="ca-content">
                                     <h4 class="ca-main four">@issue</h4>
                                     <h3 class="ca-sub four">Issues</h3>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Index","Pendings")">
+
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                <div class="ca-content">
+                                    <h4 class="ca-main four">@pending</h4>
+                                    <h3 class="ca-sub four">Pending Products</h3>
                                 </div>
                             </a>
                         </li>
