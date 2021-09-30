@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ProductDashboard";
-   // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
+    // Layout = "~/Views/Shared/ProductDetailsLayout.cshtml";
 
 }
 
@@ -22,7 +22,20 @@
                         @*<p class="btn btn-info">@Html.ActionLink("Details", "ProductDetails", new { id = item.ProductID })</p>*@
                         @Html.ActionLink("Details", "ProductDetails", "ProductDetails", new { id = item.ProductID },
                         new { @class = "btn btn-dark" })
-                        <a href="#" class="btn btn-dark">Add to Cart</a>
+
+
+                        @*
+        @using (Html.BeginForm("wishing", "ProductDetails", FormMethod.Post, new { style = "display:inline-block" }))
+        {
+            <input name="wishID" value={@item.ProductID} style="visibility:hidden" />
+            <input name="wish" type="submit" class="btn btn-dark" value="Wish-List" />
+        }
+                        *@
+
+                        @Html.ActionLink("Wish-List", "wishing", "ProductDetails",null, 
+                       new { @class = "btn btn-dark" })
+
+
                     </div>
                 </div>
             </div>

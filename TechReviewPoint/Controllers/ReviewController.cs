@@ -15,7 +15,7 @@ namespace TechReviewPoint.Controllers
     {
         private tech_review_pointEntities db = new tech_review_pointEntities();
 
-        
+
         [HttpGet]
         public ActionResult ReviewsInProductDetails()
         {
@@ -38,14 +38,14 @@ namespace TechReviewPoint.Controllers
             fileName = Path.Combine(Server.MapPath("~/Review_Image/"), fileName);
             review.UserID = Convert.ToInt32(Session["UserSessionID"]);
             review.review_img_file.SaveAs(fileName);
-          review.ReviewDate= DateTime.Now;
+            review.ReviewDate = DateTime.Now;
             review.ProductID = Convert.ToInt32(Session["product_ID"]);
 
             if (ModelState.IsValid)
             {
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("ReviewsInProductDetails","Review");
+                return RedirectToAction("ReviewsInProductDetails", "Review");
             }
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "ProductName", review.ProductID);
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", review.UserID);
@@ -62,51 +62,47 @@ namespace TechReviewPoint.Controllers
             }
 
             Session["Review_id"] = id;
-            var com = db.Comments.SqlQuery("Select  *from Comments").ToList<Comment>();
-            //var com = db.Comments.Include(r => r.Review).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
 
-            Comment pro = db.Comments.Find(id);
-
-
-            ViewData["co-ments"] = com;
-            return View(pro);
-
-            //var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).ToList();
-
-
-
-          //  var com = db.Comments.Include(c => c.Review).Include(c => c.User).Where(m => m.ReviewID==id).ToList();
+            Review review = db.Reviews.Find(id);
             /*
-            var applyJobs = (from a in db.Reviews
-                             join s in db.Users on a.UserID equals s.UserID
-                             where a.ReviewID == id
-                             select a).ToList();
+                        var com = db.Comments.SqlQuery("Select  *from Comments").ToList<Comment>();
+                        Comment pro = db.Comments.Find(id);
+
+
+                        ViewData["co-ments"] = com;
+                        return View(pro);
+            1           //comment that didn't work
             */
-            //ViewData["co-ments"] = com;
-           // return View();
+            //  var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).FirstOrDefault();
+            //var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+
+            return View(review);
         }
+        /*
+                [HttpPost]
+                public ActionResult ReviewDetails(Review review)
+                {
+                    /*
+                    comment.UserID = Convert.ToInt32(Session["UserSessionID"]);
+                    comment.ReviewID = Convert.ToInt32(Session["Review_id"]);
+                    comment.CommentDate = DateTime.Now;
 
-        [HttpPost]
-        public ActionResult ReviewDetails(Comment comment)
-        {
+                    if (ModelState.IsValid)
+                    {
+                        db.Comments.Add(comment);
+                        db.SaveChanges();
+                        return RedirectToAction("ReviewDetails","Review");
+                    }
 
-            comment.UserID = Convert.ToInt32(Session["UserSessionID"]);
-            comment.ReviewID = Convert.ToInt32(Session["Review_id"]);
-            comment.CommentDate = DateTime.Now;
 
-            if (ModelState.IsValid)
-            {
-                db.Comments.Add(comment);
-                db.SaveChanges();
-                return RedirectToAction("ReviewDetails","Review");
-            }
-            return View(comment);
-        }
+                    return View(review);
 
+                }
+        */
         [HttpGet]
         public ActionResult productIssues()
         {
-            int id = Convert.ToInt32(Session["product_ID"]);        
+            int id = Convert.ToInt32(Session["product_ID"]);
             var issues = db.Issues.Include(i => i.Product).Include(i => i.User).Where(i => i.ProductID.Equals(id)).ToList();
             ViewData["is-sue"] = issues;
             return View();

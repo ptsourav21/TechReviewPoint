@@ -27,8 +27,14 @@ namespace TechReviewPoint.Controllers
             int id = Convert.ToInt32(Session["UserSessionID"]);
             var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id));
 
-  
+            User us = db.Users.Where(m => m.UserID.Equals(id)).FirstOrDefault();
+            ViewData["user_info"] = us;
+
             return View(reviews.ToList());
+
+            System.Diagnostics.Debug.WriteLine(us.UserImg);
+
+
         }
         [HttpGet]
         public ActionResult profileUpdate()
@@ -63,26 +69,21 @@ namespace TechReviewPoint.Controllers
             fileName = Path.Combine(Server.MapPath("~/profile_pic/"), fileName);
 
             user.user_img_file.SaveAs(fileName);
-
-
-
             try
             {
                 var cu = db.Users.Find(Convert.ToInt32(Session["UserSessionID"]));
                 // user.UserEmail = "" + cu.UserEmail;
                 // user.Rating = cu.Rating;
                 //db.Entry(user).State = EntityState.Modified;
-                db.Database.ExecuteSqlCommand("Update Users set UserName = '" + user.UserName + "' , UserPassword = '" +
-                   user.UserPassword + "', UserImg = '" + user.UserImg + "', UserPhone = '" + user.UserPhone + "', UserAdress = '" + user.UserAdress + "' where UserID = " + cu.UserID);
+                db.Database.ExecuteSqlCommand("Update Users set UserName = '" + user.UserName + "' ,  UserImg = '" + user.UserImg + "', UserPhone = '" + user.UserPhone + "', UserAdress = '" + user.UserAdress + "' where UserID = " + cu.UserID);
+
                 db.SaveChanges();
             }
             catch (Exception e)
             {
                 return Content(e.ToString());
             }
-            // Session.Abandon();
-            //Session["UserSessionName"] = user.UserName;
-            // Session["UserSessionID"] = user.UserID;
+
 
             return RedirectToAction("Profile", "Users");
         }

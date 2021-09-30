@@ -52,13 +52,13 @@
                         if (Session["UserSessionEmail"] != null)
                         {
                             <!--Search box and buttons-->
-                    
-                        @*<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">*@
-                        <p >
-                            @Html.ActionLink("Search", "search", "ProductDetails", null,
-                            new { @class = "btn btn-success" })
-                        </p>
-                  
+
+                            @*<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">*@
+                            <!--search-->
+                            <li class="nav-item">
+                                <a class="nav-link px-3" aria-current="page" href="~/ProductDetails/search">Search</a>
+                            </li>
+                            <!--seacrh-->
                             <!--Q&A-->
                             <li class="nav-item">
                                 <a class="nav-link px-3" aria-current="page" href="~/QandA/ques">Q&A</a>
@@ -103,7 +103,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3" aria-current="page" href="#">Q&A</a>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link px-3" aria-current="page" href="~/Home/About">About Us</a>
                         </li>
