@@ -274,6 +274,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
+    <Content Include="images\anik.jpeg" />
+    <Content Include="images\Mouree.jpg" />
+    <Content Include="images\Purnendu.jpg" />
     <Content Include="images\tick.png" />
     <Content Include="Models\Access.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

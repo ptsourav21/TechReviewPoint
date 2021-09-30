@@ -22,7 +22,7 @@
             }
             else
             {
-                <a class="navbar-brand" href="#">@Html.ActionLink("Tech Reivew Point", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+                <a class="navbar-brand" href="#">@Html.ActionLink("TechReivewPoint", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
             }
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
                             </li>
                             <!--Q&A ends-->
                             <!--Category Dropdown-->
-                            <li class="nav-item dropdown px-3">
+                            @*<li class="nav-item dropdown px-3">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Category
                                 </a>
@@ -74,7 +74,7 @@
                                     <li><a class="dropdown-item" href="#">Laptop</a></li>
 
                                 </ul>
-                            </li>
+                            </li>*@
 
                             <!--Account Dropdown-->
                             <li class="nav-item dropdown px-3">
@@ -94,7 +94,7 @@
                         else
                         {
                             <li><p style="color:#fff; margin-top:15px">@Session["AdminSessionEmail"]</p></li>
-                            <li class="nav-item"><a class="nav-link" href="~/Admins/AdminSignout">Log Out</a></li>
+                            <li class="nav-item"><a class="nav-link" href="~/Admins/AdminLogOut">Log Out</a></li>
                         }
                     }
                     else
@@ -102,16 +102,12 @@
                         <li class="nav-item">
                             <a class="nav-link active px-3" aria-current="page" href="~/Home/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3" aria-current="page" href="#">Q&A</a>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link px-3" aria-current="page" href="~/Home/About">About Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3" aria-current="page" href="#">Contact Us</a>
-                        </li>
-                        </li>
+                        
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Join

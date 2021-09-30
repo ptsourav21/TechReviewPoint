@@ -1,7 +1,7 @@
 ﻿@model TechReviewPoint.Models.Admin
 
 @{
-     Layout = null;
+    
     if (Session["AdminSessionEmail"] == null)
     {
         Response.Redirect("~/Admins/AdminLogin");
@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
     <!-- banner -->
     <div class="wthree_agile_admin_info">
-        <div class="w3_agileits_top_nav">
+        @*<div class="w3_agileits_top_nav">
             <ul id="gn-menu" class="gn-menu-main">
                 <li class="second logo"><h1><a href="main-page.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Tech Review Point </a></h1></li>
                 <li class="second admin-pic">
@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
             <!-- //nav -->
 
-        </div>
+        </div>*@
 
         <div class="inner_content">
 

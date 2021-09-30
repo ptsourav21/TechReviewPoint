@@ -7,19 +7,19 @@
 
 
 
-<div class="col-md-4">
-    <div class="card h-100">
 
-        <div class="card-body">
+    
+
+        
 
             <img src="@Url.Content(Model.ProductImg)" width="250" height="250" />
 
             <h1 class="card-title">@Html.DisplayFor(modelItem => Model.ProductName)</h1>
-            <h2> @Html.DisplayFor(modelItem => Model.ProductDetails)</h2>
+            <h6> @Html.DisplayFor(modelItem => Model.ProductDetails)</h6>
             <p class="card-text"> Price: @Html.DisplayFor(modelItem => Model.ProductPrice)</p>
             <p class="card-text"> @Html.DisplayFor(modelItem => Model.Category.CategoryName)</p>
 
-        </div>
-    </div>
-</div>
+        
+    
+
 
