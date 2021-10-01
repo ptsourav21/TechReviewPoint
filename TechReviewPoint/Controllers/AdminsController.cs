@@ -170,6 +170,9 @@ namespace TechReviewPoint.Controllers
         public ActionResult AdminLogOut()
         {
             Session.Abandon();
+
+
+
             return RedirectToAction("AdminLogin");
         }
 
