@@ -26,16 +26,28 @@ namespace TechReviewPoint.Controllers
         {
             int id = Convert.ToInt32(Session["UserSessionID"]);
             var reviews = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.UserID.Equals(id));
-
+            
             User us = db.Users.Where(m => m.UserID.Equals(id)).FirstOrDefault();
             ViewData["user_info"] = us;
 
             return View(reviews.ToList());
 
-            System.Diagnostics.Debug.WriteLine(us.UserImg);
+        //    System.Diagnostics.Debug.WriteLine(us.UserImg);
 
 
         }
+        public ActionResult point(User user)
+        {
+            //var total_review = ("SELECT review_point FROM Reviews where UserID = " + cu.UserID);
+
+            int id = Convert.ToInt32(Session["UserSessionID"]);
+
+            var total_review = ("SELECT COUNT(*) FROM Reviews where UserID = " + id);
+
+            return View();
+        }
+
+
         [HttpGet]
         public ActionResult profileUpdate()
         {
@@ -59,7 +71,7 @@ namespace TechReviewPoint.Controllers
         [HttpPost]
         public ActionResult profileUpdate([Bind(Include = "UserID,UserName,UserEmail,UserPassword,UserPhone,UserAdress,tp_point,UserImg,user_img_file")] User user)
         {
-
+            
             string fileName = Path.GetFileNameWithoutExtension(user.user_img_file.FileName);
             string extention = Path.GetExtension(user.user_img_file.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
@@ -74,7 +86,6 @@ namespace TechReviewPoint.Controllers
                 var cu = db.Users.Find(Convert.ToInt32(Session["UserSessionID"]));
                 // user.UserEmail = "" + cu.UserEmail;
                 // user.Rating = cu.Rating;
-                //db.Entry(user).State = EntityState.Modified;
                 db.Database.ExecuteSqlCommand("Update Users set UserName = '" + user.UserName + "' ,  UserImg = '" + user.UserImg + "', UserPhone = '" + user.UserPhone + "', UserAdress = '" + user.UserAdress + "' where UserID = " + cu.UserID);
 
                 db.SaveChanges();

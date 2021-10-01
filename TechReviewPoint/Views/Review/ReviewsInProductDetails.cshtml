@@ -70,6 +70,18 @@
             <p class="card-text">
                 @item.ReviewPost
             </p>
+            @{
+                if (item.review_point == null)
+                {
+                    <p>No point yet</p>
+                }
+                else
+                {
+                    @item.review_point
+                }
+            }
+
+
             <p>
                 @Html.ActionLink("View Details", "ReviewDetails", new { id = item.ReviewID }, new { @class = "btn btn-dark" })
             </p>

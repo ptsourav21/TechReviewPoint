@@ -64,22 +64,51 @@ namespace TechReviewPoint.Controllers
             Session["Review_id"] = id;
 
             Review review = db.Reviews.Find(id);
-            /*
-                        var com = db.Comments.SqlQuery("Select  *from Comments").ToList<Comment>();
-                        Comment pro = db.Comments.Find(id);
-
-
-                        ViewData["co-ments"] = com;
-                        return View(pro);
-            1           //comment that didn't work
-            */
-            //  var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).FirstOrDefault();
-            //var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
 
             return View(review);
         }
+
+        [HttpPost]
+        public ActionResult ReviewDetails(Review review)
+        {
+            //int id = Convert.ToInt32(Session["UserSessionID"]);
+
+            try
+            {
+                var cu = db.Reviews.Find(Convert.ToInt32(Session["Review_id"]));
+                // user.UserEmail = "" + cu.UserEmail;
+                // user.Rating = cu.Rating;
+                db.Database.ExecuteSqlCommand("Update Reviews set review_point = '" + review.review_point + "'  where ReviewID = " + cu.ReviewID);
+                // var total_review = ("SELECT COUNT(*) FROM Reviews where UserID = " + cu.UserID);
+                db.Database.ExecuteSqlCommand("Update Users set tp_point = '" + cu.review_point + "'  where UserID = " + cu.UserID);
+
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return Content(e.ToString());
+            }
+            return RedirectToAction("ReviewsInProductDetails", "Review");
+
+          //  return View(review);
+        }
+
+
+
         /*
-                [HttpPost]
+                    var com = db.Comments.SqlQuery("Select  *from Comments").ToList<Comment>();
+                    Comment pro = db.Comments.Find(id);
+
+
+                    ViewData["co-ments"] = com;
+                    return View(pro);
+        1           //comment that didn't work
+        */
+        //  var com = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ReviewID.Equals(id)).FirstOrDefault();
+        //var re = db.Reviews.Include(r => r.Product).Include(r => r.User).Where(m => m.ProductID.Equals(id)).ToList();
+
+        /*
+                
                 public ActionResult ReviewDetails(Review review)
                 {
                     /*

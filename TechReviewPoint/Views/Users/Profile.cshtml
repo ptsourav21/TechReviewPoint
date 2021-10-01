@@ -37,7 +37,19 @@
         <h1>
             @u.UserName
         </h1>
-        <h6>Tech Points <span class="badge bg-secondary"> 8.5/10</span></h6>
+        <h6>Tech Points <span class="badge bg-secondary">
+   
+    @{
+        if (u.tp_point == null)
+        {
+            <p>New User</p>
+        }
+        else
+        {
+            @u.tp_point
+        }
+    }
+</span></h6>
         <p>@u.UserAdress</p>
 
     </div>
