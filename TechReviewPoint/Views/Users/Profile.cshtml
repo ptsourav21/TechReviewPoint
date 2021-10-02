@@ -33,26 +33,28 @@
     }
 
 
-    <div class="mx-4 my-4">
-        <h1>
-            @u.UserName
-        </h1>
-        <h6>Tech Points <span class="badge bg-secondary">
-   
+<div class="mx-4 my-4">
+    <h1>
+        @u.UserName
+    </h1>
+
+
     @{
         if (u.tp_point == null)
         {
-            <p>New User</p>
+            <span class="badge bg-secondary">  New user </span>
+
         }
         else
         {
-            @u.tp_point
+            <h6>Tech Points <span class="badge bg-secondary">  @u.tp_point </span></h6>
+
         }
     }
-</span></h6>
-        <p>@u.UserAdress</p>
 
-    </div>
+    <p>@u.UserAdress</p>
+
+</div>
 
     <!--Modal-->
     <div class="mx-4 my-4">
